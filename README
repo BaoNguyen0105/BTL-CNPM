@@ -1,0 +1,14 @@
+Template for Assignment 4 - Software engineering
+
+#####################
+#   Create server   #
+#####################
+    1. npm install
+    2. node server/api.js
+
+#####################
+#   Run Client      #
+#####################
+    1. install extension Live Server on VScode
+    2. go to client/html/
+    3. run example.html with Live Server
