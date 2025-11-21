@@ -1,0 +1,10 @@
+# EXTERNAL
+HCMUT_SSO(id, username, password)
+HCMUT_DATACORE(id, name, email, phone, faculty, ...)
+HCMUT_LIBRARY(id, title, type, content)
+
+# INTERNAL
+User_type(id, type)
+Tutor_schedule(tutor_id, date, time)
+Session(session_id, student_id, tutor_id, date, time, type, place)
+Review (session_id, student_id, tutor_id, review)
