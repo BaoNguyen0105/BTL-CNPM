@@ -17,6 +17,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
         console.log('Connected to the SQLite database.');
     }
 });
+
 function authentication(username, password) {
     return new Promise((resolve, reject) => {
         db.get(
@@ -32,7 +33,6 @@ function authentication(username, password) {
 }
 
 
-// 2. Endpoint POST: Thêm người dùng mới
 app.post('/authen', async (req, res) => {
     const { username, password } = req.body;
     
