@@ -6,14 +6,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/globals.css" />
     <link rel="stylesheet" href="../css/styleguide.css" />
-    <link rel="stylesheet" href="../css/StudentProfile.css" />
+    <link rel="stylesheet" href="../css/Profile.css" />
   </head>
   <body>
     <div class="khai-thongtincanhan">
       <div class="top-bar">
         <div class="background"></div>
         <div class="logo"></div>
-        <p class="name"><span class="text-wrapper">NGUYỄN VĂN A | </span> <span class="span">Tutor</span></p>
+        <p class="name">
+          <span class="text-wrapper">NGUYỄN VĂN A | </span> 
+          <span class="span" id="roleDisplay">Sinh viên</span>
+        </p>
         <div class="div">Tutor System</div>
         <div class="text-wrapper-2">☰</div>
         <img class="bk-logo" src="../images/logo.png" />
@@ -45,7 +48,7 @@
           <div class="text-wrapper-8">&gt;</div>
         </div>
         <div class="row-4">
-          <div class="text-3">Thông tin Tutor</div>
+          <div class="text-3" id="sidebarTitle">Thông tin sinh viên</div>
           <div class="text-wrapper-9">&gt;</div>
           <div class="text-wrapper-10">☰</div>
         </div>
@@ -61,7 +64,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
             <!-- Cột 1: Chỉ có avatar -->
             <div class="flex items-start justify-center md:justify-start">
-              <img class="w-full max-w-[166px] h-auto sm:h-[231px] object-cover rounded" src="../images/avatar.png" alt="Ảnh tutor" />
+              <img class="w-full max-w-[166px] h-auto sm:h-[231px] object-cover rounded" src="../images/avatar.png" alt="Ảnh" id="avatarAlt" />
             </div>
 
             <!-- Cột 2: Thông tin cơ bản -->
@@ -71,29 +74,50 @@
                 <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Nguyễn Văn A</div>
               </div>
               <div>
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Mã số tutor</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">22115xx</div>
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black" id="codeLabel">Mã số sinh viên</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1" id="codeValue">22115001</div>
+              </div>
+              <!-- Student only: Khoa -->
+              <div id="studentKhoa" class="student-only">
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Khoa</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Khoa Khoa học và Kỹ thuật Máy tính</div>
               </div>
             </div>
 
-            <!-- Cột 3: Thông tin chuyên môn -->
+            <!-- Cột 3: Thông tin học tập/chuyên môn -->
             <div class="space-y-4">
-              <div>
+              <!-- Student only: Hệ đào tạo, Chương trình -->
+              <div id="studentHeDaoTao" class="student-only">
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Hệ đào tạo</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Chính quy</div>
+              </div>
+              <div id="studentChuongTrinh" class="student-only">
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Chương trình</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Chương trình Đại học tiêu chuẩn</div>
+              </div>
+              <!-- Tutor only: Lĩnh vực -->
+              <div id="tutorLinhVuc" class="tutor-only">
                 <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Lĩnh vực</span>
                 <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Công nghệ phần mềm</div>
               </div>
-              <div>
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Tình trạng tutor</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Giảng dạy</div>
-              </div>
             </div>
 
-            <!-- Cột 4: Trống hoặc thông tin bổ sung -->
+            <!-- Cột 4: Thông tin khác -->
             <div class="space-y-4">
-                <div>
-                    <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Khoa</span>
-                    <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">KH MT</div>
-                  </div>
+              <!-- Student only: Khóa học, Tình trạng sinh viên -->
+              <div id="studentKhoaHoc" class="student-only">
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Khóa học</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">K2022</div>
+              </div>
+              <div>
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black" id="statusLabel">Tình trạng sinh viên</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1" id="statusValue">Đang học</div>
+              </div>
+              <!-- Tutor only: Khoa -->
+              <div id="tutorKhoa" class="tutor-only">
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Khoa</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">KH MT</div>
+              </div>
             </div>
           </div>
 
@@ -108,29 +132,29 @@
               <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">0859809xxx</div>
             </div>
             <div>
-              <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Email sinh viên</span>
+              <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black" id="emailLabel">Email sinh viên</span>
               <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1 break-words">A.nguyenvan@hcmut.edu.vn</div>
             </div>
           </div>
 
-          <!-- Section: Hỗ trợ -->
+          <!-- Section: Nhu cầu hỗ trợ (Student) / Hỗ trợ (Tutor) -->
           <div class="w-full h-auto min-h-[65px] bg-[#3c8dbc] flex items-center px-4 sm:px-6 py-4 mb-4">
-            <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-white">Hỗ trợ</span>
+            <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-white" id="supportSectionTitle">Nhu cầu hỗ trợ</span>
           </div>
 
           <div class="mb-6">
-            <div class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black mb-2">Hỗ trợ</div>
+            <div class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black mb-2" id="supportTitle">Nhu cầu</div>
             <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black whitespace-pre-line" id="supportDisplay">
               <!-- Danh sách sẽ được hiển thị bằng JavaScript -->
             </div>
           </div>
 
-          <!-- Section: Lịch rảnh -->
-          <div class="w-full h-auto min-h-[65px] bg-[#3c8dbc] flex items-center px-4 sm:px-6 py-4 mb-4">
+          <!-- Section: Lịch rảnh (Tutor only) -->
+          <div class="w-full h-auto min-h-[65px] bg-[#3c8dbc] flex items-center px-4 sm:px-6 py-4 mb-4 tutor-only" id="scheduleSection">
             <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-white">Lịch rảnh</span>
           </div>
 
-          <div class="mb-6">
+          <div class="mb-6 tutor-only" id="scheduleTableContainer">
             <div class="overflow-x-auto">
               <table class="w-full border-collapse border border-gray-300">
                 <thead>
@@ -147,12 +171,12 @@
             </div>
           </div>
 
-          <!-- Section: Tài liệu tham khảo -->
-          <div class="w-full h-auto min-h-[65px] bg-[#3c8dbc] flex items-center px-4 sm:px-6 py-4 mb-4">
+          <!-- Section: Tài liệu tham khảo (Tutor only) -->
+          <div class="w-full h-auto min-h-[65px] bg-[#3c8dbc] flex items-center px-4 sm:px-6 py-4 mb-4 tutor-only" id="referenceSection">
             <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-white">Tài liệu tham khảo</span>
           </div>
 
-          <div class="mb-6">
+          <div class="mb-6 tutor-only" id="referenceMaterialsContainer">
             <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black" id="referenceMaterials">
               <!-- Danh sách tài liệu sẽ được hiển thị bằng JavaScript -->
             </div>
@@ -166,8 +190,8 @@
           <div class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Số buổi hướng dẫn</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1" id="totalSessions">19</div>
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black" id="statLabel">Số lần tham gia</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1" id="statValue">19</div>
               </div>
             </div>
             <div>
@@ -175,10 +199,10 @@
               <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">4.1/5 (19 lượt đánh giá)</div>
             </div>
             <div>
-              <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Nhận xét</span>
+              <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black" id="commentLabel">Nhận xét của Tutor</span>
               <div class="space-y-2 mt-2" id="commentsList">
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Tận tâm - Sinh viên A</div>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Nhiệt huyết - Sinh viên B</div>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Chăm chỉ - Tutor A</div>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Hoàn thành tốt - Tutor B</div>
               </div>
             </div>
           </div>
@@ -200,11 +224,11 @@
         <div class="modal-title">Chỉnh sửa thông tin</div>
         
         <div class="modal-section">
-          <div class="section-title">Hỗ trợ</div>
+          <div class="section-title" id="modalSupportTitle">Nhu cầu hỗ trợ</div>
           <div class="input-group">
             <div class="input-field">
               <label for="supportTitle">Tiêu đề</label>
-              <input type="text" id="supportTitle" class="form-input" placeholder="Nhập tiêu đề hỗ trợ" />
+              <input type="text" id="supportTitle" class="form-input" placeholder="Nhập tiêu đề" />
             </div>
             <div class="input-field">
               <label for="supportSubject">Môn học</label>
@@ -218,13 +242,14 @@
         </div>
 
         <div class="modal-section">
-          <div class="section-title">Danh sách hỗ trợ</div>
+          <div class="section-title" id="modalSupportListTitle">Danh sách nhu cầu hỗ trợ</div>
           <div class="support-list" id="supportList">
             <!-- Danh sách sẽ được thêm bằng JavaScript -->
           </div>
         </div>
 
-        <div class="modal-section">
+        <!-- Section: Lịch rảnh (Tutor only) -->
+        <div class="modal-section tutor-only" id="modalScheduleSection">
           <div class="section-title">Lịch rảnh</div>
           <div class="input-group">
             <div class="input-field">
@@ -252,7 +277,7 @@
           </div>
         </div>
 
-        <div class="modal-section">
+        <div class="modal-section tutor-only" id="modalScheduleListSection">
           <div class="section-title">Danh sách lịch rảnh</div>
           <div class="support-list" id="scheduleList">
             <!-- Danh sách sẽ được thêm bằng JavaScript -->
@@ -267,6 +292,10 @@
     </div>
 
     <script>
+      // Xác định role từ URL parameter hoặc mặc định là 'student'
+      const urlParams = new URLSearchParams(window.location.search);
+      const userRole = urlParams.get('role') || 'student'; // 'student' hoặc 'tutor'
+      
       // Danh sách môn học có sẵn
       const subjectsList = [
         'Lập trình Web (CO3049)',
@@ -281,8 +310,15 @@
         'Xác suất thống kê (MA1004)'
       ];
 
-      // Dữ liệu hỗ trợ hiện tại
-      let supportList = [
+      // Dữ liệu nhu cầu hỗ trợ/hỗ trợ
+      let supportNeeds = userRole === 'student' ? [
+        { title: 'Hướng dẫn thiết kế UI', subject: 'Lập trình Web (CO3049)' },
+        { title: 'Ôn cuối kỳ Mạng máy tính', subject: 'Mạng máy tính (CO3093)' },
+        { title: 'Hướng dẫn BTL3 PPL', subject: 'Nguyên lý ngôn ngữ lập trình (CO3005)' },
+        { title: 'Tư vấn ngành nghệ trong lĩnh vực IT', subject: 'Tư vấn' },
+        { title: 'Hướng dẫn BTL3 PPL', subject: 'Nguyên lý ngôn ngữ lập trình (CO3005)' },
+        { title: 'Hướng dẫn BTL3 PPL', subject: 'Nguyên lý ngôn ngữ lập trình (CO3005)' }
+      ] : [
         { title: 'Hướng dẫn làm web', subject: 'Lập trình Web (CO3049)' },
         { title: 'Ôn cuối kì Mạng máy tính', subject: 'Mạng máy tính (CO3093)' },
         { title: 'Hướng dẫn BTL3 PPL', subject: 'Nguyên lý ngôn ngữ lập trình (CO3005)' },
@@ -291,9 +327,16 @@
         { title: 'Hướng dẫn BTL3 PPL', subject: 'Nguyên lý ngôn ngữ lập trình (CO3005)' }
       ];
 
-      // Dữ liệu lịch rảnh hiện tại
+      // Dữ liệu lịch rảnh (chỉ cho tutor)
       let scheduleList = [
         { day: '2', time: '7-9', weeks: '1-2-14-16' }
+      ];
+
+      // Dữ liệu tài liệu tham khảo (chỉ cho tutor)
+      const referenceMaterials = [
+        'Tài liệu 1: Hướng dẫn lập trình Web',
+        'Tài liệu 2: Giáo trình Mạng máy tính',
+        'Tài liệu 3: Slide bài giảng PPL'
       ];
 
       // DOM Elements
@@ -313,12 +356,66 @@
       const scheduleDay = document.getElementById('scheduleDay');
       const scheduleTime = document.getElementById('scheduleTime');
       const scheduleWeeks = document.getElementById('scheduleWeeks');
+      const referenceMaterialsEl = document.getElementById('referenceMaterials');
+
+      // Hàm điều chỉnh giao diện theo role
+      function adjustUIForRole() {
+        const isStudent = userRole === 'student';
+        const isTutor = userRole === 'tutor';
+
+        // Ẩn/hiện các phần tử theo role
+        document.querySelectorAll('.student-only').forEach(el => {
+          el.style.display = isStudent ? 'block' : 'none';
+        });
+        document.querySelectorAll('.tutor-only').forEach(el => {
+          el.style.display = isTutor ? 'block' : 'none';
+        });
+
+        // Cập nhật text theo role
+        document.getElementById('roleDisplay').textContent = isStudent ? 'Sinh viên' : 'Tutor';
+        document.getElementById('sidebarTitle').textContent = isStudent ? 'Thông tin sinh viên' : 'Thông tin Tutor';
+        document.getElementById('codeLabel').textContent = isStudent ? 'Mã số sinh viên' : 'Mã số tutor';
+        document.getElementById('codeValue').textContent = isStudent ? '22115001' : '22115xx';
+        document.getElementById('statusLabel').textContent = isStudent ? 'Tình trạng sinh viên' : 'Tình trạng tutor';
+        document.getElementById('statusValue').textContent = isStudent ? 'Đang học' : 'Giảng dạy';
+        document.getElementById('emailLabel').textContent = isStudent ? 'Email sinh viên' : 'Email tutor';
+        document.getElementById('supportSectionTitle').textContent = isStudent ? 'Nhu cầu hỗ trợ' : 'Hỗ trợ';
+        document.getElementById('supportTitle').textContent = isStudent ? 'Nhu cầu' : 'Hỗ trợ';
+        document.getElementById('modalSupportTitle').textContent = isStudent ? 'Nhu cầu hỗ trợ' : 'Hỗ trợ';
+        document.getElementById('modalSupportListTitle').textContent = isStudent ? 'Danh sách nhu cầu hỗ trợ' : 'Danh sách hỗ trợ';
+        document.getElementById('statLabel').textContent = isStudent ? 'Số lần tham gia' : 'Số buổi hướng dẫn';
+        document.getElementById('statValue').textContent = '19';
+        document.getElementById('commentLabel').textContent = isStudent ? 'Nhận xét của Tutor' : 'Nhận xét';
+        document.getElementById('avatarAlt').alt = isStudent ? 'Ảnh sinh viên' : 'Ảnh tutor';
+
+        // Cập nhật placeholder
+        supportTitle.placeholder = isStudent ? 'Nhập tiêu đề nhu cầu hỗ trợ' : 'Nhập tiêu đề hỗ trợ';
+
+        // Cập nhật nhận xét
+        const commentsList = document.getElementById('commentsList');
+        if (isStudent) {
+          commentsList.innerHTML = `
+            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Chăm chỉ - Tutor A</div>
+            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Hoàn thành tốt - Tutor B</div>
+          `;
+        } else {
+          commentsList.innerHTML = `
+            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Tận tâm - Sinh viên A</div>
+            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Nhiệt huyết - Sinh viên B</div>
+          `;
+        }
+      }
+
+      // Khởi tạo giao diện
+      adjustUIForRole();
 
       // Mở modal
       editInfoBtn.addEventListener('click', () => {
         editModal.style.display = 'flex';
         renderSupportList();
-        renderScheduleList();
+        if (userRole === 'tutor') {
+          renderScheduleList();
+        }
       });
 
       // Đóng modal
@@ -373,7 +470,7 @@
         }
       });
 
-      // Thêm hỗ trợ
+      // Thêm nhu cầu hỗ trợ/hỗ trợ
       addSupportBtn.addEventListener('click', () => {
         const title = supportTitle.value.trim();
         const subject = supportSubject.value.trim();
@@ -383,35 +480,38 @@
           return;
         }
 
-        supportList.push({ title, subject });
+        supportNeeds.push({ title, subject });
         renderSupportList();
         resetSupportForm();
       });
 
-      // Thêm lịch rảnh
-      addScheduleBtn.addEventListener('click', () => {
-        const day = scheduleDay.value.trim();
-        const time = scheduleTime.value.trim();
-        const weeks = scheduleWeeks.value.trim();
+      // Thêm lịch rảnh (chỉ cho tutor)
+      if (addScheduleBtn) {
+        addScheduleBtn.addEventListener('click', () => {
+          const day = scheduleDay.value.trim();
+          const time = scheduleTime.value.trim();
+          const weeks = scheduleWeeks.value.trim();
 
-        if (day === '' || time === '' || weeks === '') {
-          alert('Vui lòng nhập đầy đủ thông tin lịch rảnh');
-          return;
-        }
+          if (day === '' || time === '' || weeks === '') {
+            alert('Vui lòng nhập đầy đủ thông tin lịch rảnh');
+            return;
+          }
 
-        scheduleList.push({ day, time, weeks });
-        renderScheduleList();
-        resetScheduleForm();
-      });
+          scheduleList.push({ day, time, weeks });
+          renderScheduleList();
+          resetScheduleForm();
+        });
+      }
 
-      // Render danh sách hỗ trợ trong modal
+      // Render danh sách nhu cầu hỗ trợ/hỗ trợ trong modal
       function renderSupportList() {
-        if (supportList.length === 0) {
-          supportListEl.innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">Chưa có hỗ trợ nào</div>';
+        if (supportNeeds.length === 0) {
+          const emptyText = userRole === 'student' ? 'Chưa có nhu cầu hỗ trợ nào' : 'Chưa có hỗ trợ nào';
+          supportListEl.innerHTML = `<div style="padding: 20px; text-align: center; color: #999;">${emptyText}</div>`;
           return;
         }
 
-        supportListEl.innerHTML = supportList.map((item, index) => `
+        supportListEl.innerHTML = supportNeeds.map((item, index) => `
           <div class="support-item">
             <div class="support-item-title">${item.title}</div>
             <div class="support-item-subject">
@@ -422,8 +522,10 @@
         `).join('');
       }
 
-      // Render danh sách lịch rảnh trong modal
+      // Render danh sách lịch rảnh trong modal (chỉ cho tutor)
       function renderScheduleList() {
+        if (!scheduleListEl) return;
+        
         if (scheduleList.length === 0) {
           scheduleListEl.innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">Chưa có lịch rảnh nào</div>';
           return;
@@ -444,18 +546,20 @@
       supportListEl.addEventListener('click', (e) => {
         if (e.target.classList.contains('btn-delete') && e.target.getAttribute('data-type') === 'support') {
           const index = parseInt(e.target.getAttribute('data-index'));
-          supportList.splice(index, 1);
+          supportNeeds.splice(index, 1);
           renderSupportList();
         }
       });
 
-      scheduleListEl.addEventListener('click', (e) => {
-        if (e.target.classList.contains('btn-delete') && e.target.getAttribute('data-type') === 'schedule') {
-          const index = parseInt(e.target.getAttribute('data-index'));
-          scheduleList.splice(index, 1);
-          renderScheduleList();
-        }
-      });
+      if (scheduleListEl) {
+        scheduleListEl.addEventListener('click', (e) => {
+          if (e.target.classList.contains('btn-delete') && e.target.getAttribute('data-type') === 'schedule') {
+            const index = parseInt(e.target.getAttribute('data-index'));
+            scheduleList.splice(index, 1);
+            renderScheduleList();
+          }
+        });
+      }
 
       // Reset form hỗ trợ
       function resetSupportForm() {
@@ -466,9 +570,9 @@
 
       // Reset form lịch
       function resetScheduleForm() {
-        scheduleDay.value = '';
-        scheduleTime.value = '';
-        scheduleWeeks.value = '';
+        if (scheduleDay) scheduleDay.value = '';
+        if (scheduleTime) scheduleTime.value = '';
+        if (scheduleWeeks) scheduleWeeks.value = '';
       }
 
       // Reset tất cả form
@@ -477,20 +581,23 @@
         resetScheduleForm();
       }
 
-      // Render danh sách hỗ trợ trên trang chính
+      // Render danh sách nhu cầu hỗ trợ/hỗ trợ trên trang chính
       function renderSupportDisplay() {
-        if (supportList.length === 0) {
-          supportDisplay.textContent = 'Chưa có hỗ trợ nào';
+        if (supportNeeds.length === 0) {
+          const emptyText = userRole === 'student' ? 'Chưa có nhu cầu hỗ trợ nào' : 'Chưa có hỗ trợ nào';
+          supportDisplay.textContent = emptyText;
           return;
         }
 
-        supportDisplay.textContent = supportList.map(item => 
+        supportDisplay.textContent = supportNeeds.map(item => 
           `${item.title} - ${item.subject}`
         ).join('\n\n');
       }
 
-      // Render bảng lịch rảnh trên trang chính
+      // Render bảng lịch rảnh trên trang chính (chỉ cho tutor)
       function renderScheduleTable() {
+        if (!scheduleTableBody) return;
+        
         if (scheduleList.length === 0) {
           scheduleTableBody.innerHTML = '<tr><td colspan="3" class="border border-gray-300 px-4 py-2 text-center text-gray-500">Chưa có lịch rảnh nào</td></tr>';
           return;
@@ -498,11 +605,25 @@
 
         scheduleTableBody.innerHTML = scheduleList.map(item => `
           <tr>
-            <td class="border border-gray-300 px-4 py-2 font-normal text-[16px] sm:text-[18px] lg:text-[20px]">${item.day}</td>
+            <td class="border border-gray-300 px-4 py-2 font-normal text-[16px] sm:text-[18px] lg:text-[20px]">Thứ ${item.day}</td>
             <td class="border border-gray-300 px-4 py-2 font-normal text-[16px] sm:text-[18px] lg:text-[20px]">${item.time}</td>
             <td class="border border-gray-300 px-4 py-2 font-normal text-[16px] sm:text-[18px] lg:text-[20px]">${item.weeks}</td>
           </tr>
         `).join('');
+      }
+
+      // Render tài liệu tham khảo (chỉ cho tutor)
+      function renderReferenceMaterials() {
+        if (!referenceMaterialsEl) return;
+        
+        if (referenceMaterials.length === 0) {
+          referenceMaterialsEl.textContent = 'Chưa có tài liệu tham khảo nào';
+          return;
+        }
+
+        referenceMaterialsEl.innerHTML = referenceMaterials.map(material => 
+          `<div class="mb-2">${material}</div>`
+        ).join('');
       }
 
       // Lưu thay đổi
@@ -513,14 +634,50 @@
         resetForm();
         // Cập nhật lại danh sách trên trang chính
         renderSupportDisplay();
-        renderScheduleTable();
+        if (userRole === 'tutor') {
+          renderScheduleTable();
+        }
       });
 
       // Khởi tạo danh sách ban đầu
       renderSupportList();
-      renderScheduleList();
+      if (userRole === 'tutor') {
+        renderScheduleList();
+        renderScheduleTable();
+        renderReferenceMaterials();
+      }
       renderSupportDisplay();
-      renderScheduleTable();
+
+      // Navigation handlers
+      function navigateToPage(page) {
+        const roleParam = userRole ? `?role=${userRole}` : '';
+        window.location.href = `${page}${roleParam}`;
+      }
+
+      // Nút "Trở về trang trước" - về HomePage
+      const backButton = document.querySelector('.frame .cursor-pointer');
+      if (backButton) {
+        backButton.addEventListener('click', () => {
+          navigateToPage('HomePage.html');
+        });
+      }
+
+      // Sidebar navigation
+      document.querySelector('.row').addEventListener('click', () => {
+        navigateToPage('Student schedule.html');
+      });
+
+      document.querySelector('.row-2').addEventListener('click', () => {
+        navigateToPage('Library.html');
+      });
+
+      document.querySelector('.row-3').addEventListener('click', () => {
+        navigateToPage('HomePage.html');
+      });
+
+      document.querySelector('.row-4').addEventListener('click', () => {
+        navigateToPage('Profile.html');
+      });
     </script>
   </body>
 </html>

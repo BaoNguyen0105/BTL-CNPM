@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/globals.css" />
+    <link rel="stylesheet" href="../css/styleguide.css" />
+    <link rel="stylesheet" href="../css/Profile.css" />
+  </head>
+  <body>
+    <div class="khai-thongtincanhan">
+      <div class="top-bar">
+        <div class="background"></div>
+        <div class="logo"></div>
+        <p class="name">
+          <span class="text-wrapper">NGUYỄN VĂN A | </span> 
+          <span class="span" id="roleDisplay">Sinh viên</span>
+        </p>
+        <div class="div">Tutor System</div>
+        <div class="text-wrapper-2">☰</div>
+        <img class="bk-logo" src="../images/logo.png" />
+      </div>
+      <div class="frame">
+        <div class="w-full h-[82px] bg-[#d9d9d9] flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 sm:px-6 py-2 sm:py-0 gap-2 sm:gap-0">
+          <span class="font-bold text-[16px] sm:text-[20px] text-black cursor-pointer">← Trở về trang trước</span>
+        </div>
+      </div>
+      <div class="side-bar">
+        <div class="background-2"></div>
+        <div class="row">
+          <div class="text-wrapper-5">☰</div>
+          <div class="text">Buổi học</div>
+          <div class="text-wrapper-6">&gt;</div>
+        </div>
+        <div class="row-2">
+          <div class="text-wrapper-5">☰</div>
+          <div class="text">Thư viện</div>
+          <div class="text-wrapper-6">&gt;</div>
+        </div>
+        <div class="row-3">
+          <div class="text-wrapper-7">☰</div>
+          <div class="text-2">Trang chủ</div>
+          <div class="text-wrapper-8">&gt;</div>
+        </div>
+        <div class="row-4">
+          <div class="text-3" id="sidebarTitle">Thông tin sinh viên</div>
+          <div class="text-wrapper-9">&gt;</div>
+          <div class="text-wrapper-10">☰</div>
+        </div>
+      </div>
+      <div class="MAIN-CONTENT">
+        <div class="w-full min-h-screen bg-[#fbfafa] p-4 sm:p-6">
+          <!-- Section: Tiêu đề -->
+          <div class="w-full h-auto min-h-[65px] bg-[#3c8dbc] flex items-center px-4 sm:px-6 py-4 mb-4">
+            <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-white">Thư viện tài liệu</span>
+          </div>
+
+          <!-- Section: Tìm kiếm -->
+          <div class="w-full mb-6">
+            <div class="bg-white rounded-lg shadow-sm p-4 sm:p-6">
+              <div class="mb-4">
+                <label class="block font-bold text-[16px] sm:text-[18px] lg:text-[20px] text-black mb-2">
+                  Tìm kiếm tài liệu
+                </label>
+                <div class="flex flex-col sm:flex-row gap-3">
+                  <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[14px] sm:text-[16px] focus:outline-none focus:ring-2 focus:ring-[#3c8dbc] focus:border-transparent" 
+                    placeholder="Nhập tên tài liệu hoặc mã môn học (VD: CO3049, Lập trình Web...)"
+                  />
+                  <button 
+                    id="searchBtn" 
+                    class="px-6 py-2 bg-[#3c8dbc] text-white font-bold text-[14px] sm:text-[16px] rounded-lg hover:bg-[#367fa9] transition-colors whitespace-nowrap"
+                  >
+                    Tìm kiếm
+                  </button>
+                  <button 
+                    id="clearSearchBtn" 
+                    class="px-6 py-2 bg-gray-500 text-white font-bold text-[14px] sm:text-[16px] rounded-lg hover:bg-gray-600 transition-colors whitespace-nowrap"
+                  >
+                    Xóa bộ lọc
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Danh sách tài liệu -->
+          <div class="w-full">
+            <div id="documentsContainer">
+              <!-- Danh sách tài liệu sẽ được render bằng JavaScript -->
+            </div>
+            <div id="noResultsMessage" class="hidden text-center py-8">
+              <p class="text-[16px] sm:text-[18px] lg:text-[20px] text-gray-500">
+                Không tìm thấy tài liệu nào phù hợp với từ khóa tìm kiếm.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <div class="background-3"></div>
+        <p class="disclaimer">
+          <span class="text-wrapper-37">This is a third party software.<br /></span>
+          <span class="text-wrapper-38">All rights belong to Ho Chi Minh University of Technology</span>
+        </p>
+        <p class="version"><span class="text-wrapper-39">Version </span> <span class="text-wrapper-40">0.1.0</span></p>
+      </div>
+    </div>
+
+    <script>
+      // Dữ liệu tài liệu mẫu
+      const documentsData = [
+        {
+          subjectCode: 'CO3049',
+          subjectName: 'Lập trình Web',
+          documents: [
+            { id: 1, name: 'Giáo trình Lập trình Web - Chương 1', fileName: 'Giao-trinh-LTW-Chuong1.pdf', size: '2.5 MB' },
+            { id: 2, name: 'Slide bài giảng HTML/CSS', fileName: 'Slide-HTML-CSS.pdf', size: '1.8 MB' },
+            { id: 3, name: 'Bài tập thực hành JavaScript', fileName: 'Bai-tap-JavaScript.docx', size: '850 KB' },
+            { id: 4, name: 'Tài liệu tham khảo React', fileName: 'Tai-lieu-React.pdf', size: '3.2 MB' }
+          ]
+        },
+        {
+          subjectCode: 'CO3093',
+          subjectName: 'Mạng máy tính',
+          documents: [
+            { id: 5, name: 'Giáo trình Mạng máy tính - Tập 1', fileName: 'Giao-trinh-Mang-may-tinh-Tap1.pdf', size: '4.1 MB' },
+            { id: 6, name: 'Slide bài giảng TCP/IP', fileName: 'Slide-TCP-IP.pdf', size: '2.3 MB' },
+            { id: 7, name: 'Bài tập mạng máy tính', fileName: 'Bai-tap-Mang-may-tinh.pdf', size: '1.5 MB' }
+          ]
+        },
+        {
+          subjectCode: 'CO3005',
+          subjectName: 'Nguyên lý ngôn ngữ lập trình',
+          documents: [
+            { id: 8, name: 'Giáo trình PPL - Chương 1-3', fileName: 'Giao-trinh-PPL-Chuong1-3.pdf', size: '3.8 MB' },
+            { id: 9, name: 'Slide bài giảng PPL', fileName: 'Slide-PPL.pdf', size: '2.9 MB' },
+            { id: 10, name: 'Tài liệu tham khảo về Compiler', fileName: 'Tai-lieu-Compiler.pdf', size: '5.2 MB' }
+          ]
+        },
+        {
+          subjectCode: 'CO2003',
+          subjectName: 'Cấu trúc dữ liệu và giải thuật',
+          documents: [
+            { id: 11, name: 'Giáo trình CTDL&GT', fileName: 'Giao-trinh-CTDL-GT.pdf', size: '6.5 MB' },
+            { id: 12, name: 'Slide bài giảng Cây nhị phân', fileName: 'Slide-Cay-nhi-phan.pdf', size: '1.9 MB' },
+            { id: 13, name: 'Bài tập thực hành CTDL&GT', fileName: 'Bai-tap-CTDL-GT.pdf', size: '2.1 MB' }
+          ]
+        },
+        {
+          subjectCode: 'CO2010',
+          subjectName: 'Cơ sở dữ liệu',
+          documents: [
+            { id: 14, name: 'Giáo trình Cơ sở dữ liệu', fileName: 'Giao-trinh-CSDL.pdf', size: '4.7 MB' },
+            { id: 15, name: 'Slide bài giảng SQL', fileName: 'Slide-SQL.pdf', size: '2.4 MB' },
+            { id: 16, name: 'Bài tập thực hành SQL', fileName: 'Bai-tap-SQL.pdf', size: '1.2 MB' }
+          ]
+        },
+        {
+          subjectCode: 'CO2007',
+          subjectName: 'Hệ điều hành',
+          documents: [
+            { id: 17, name: 'Giáo trình Hệ điều hành', fileName: 'Giao-trinh-HDH.pdf', size: '5.3 MB' },
+            { id: 18, name: 'Slide bài giảng Process Management', fileName: 'Slide-Process-Management.pdf', size: '2.6 MB' }
+          ]
+        },
+        {
+          subjectCode: 'CO2004',
+          subjectName: 'Lập trình hướng đối tượng',
+          documents: [
+            { id: 19, name: 'Giáo trình OOP', fileName: 'Giao-trinh-OOP.pdf', size: '4.9 MB' },
+            { id: 20, name: 'Slide bài giảng OOP', fileName: 'Slide-OOP.pdf', size: '3.1 MB' },
+            { id: 21, name: 'Bài tập thực hành OOP', fileName: 'Bai-tap-OOP.pdf', size: '1.8 MB' }
+          ]
+        },
+        {
+          subjectCode: 'MA1003',
+          subjectName: 'Toán rời rạc',
+          documents: [
+            { id: 22, name: 'Giáo trình Toán rời rạc', fileName: 'Giao-trinh-Toan-roi-rac.pdf', size: '5.8 MB' },
+            { id: 23, name: 'Slide bài giảng Logic', fileName: 'Slide-Logic.pdf', size: '2.0 MB' }
+          ]
+        },
+        {
+          subjectCode: 'MA1004',
+          subjectName: 'Xác suất thống kê',
+          documents: [
+            { id: 24, name: 'Giáo trình Xác suất thống kê', fileName: 'Giao-trinh-Xac-suat-thong-ke.pdf', size: '6.2 MB' },
+            { id: 25, name: 'Slide bài giảng Xác suất', fileName: 'Slide-Xac-suat.pdf', size: '2.7 MB' },
+            { id: 26, name: 'Bài tập Xác suất thống kê', fileName: 'Bai-tap-Xac-suat-thong-ke.pdf', size: '1.6 MB' }
+          ]
+        }
+      ];
+
+      // DOM Elements
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+      const documentsContainer = document.getElementById('documentsContainer');
+      const noResultsMessage = document.getElementById('noResultsMessage');
+
+      // Xác định role từ URL parameter hoặc mặc định là 'student'
+      const urlParams = new URLSearchParams(window.location.search);
+      const userRole = urlParams.get('role') || 'student';
+
+      // Điều chỉnh UI theo role
+      function adjustUIForRole() {
+        const isStudent = userRole === 'student';
+        document.getElementById('roleDisplay').textContent = isStudent ? 'Sinh viên' : 'Tutor';
+        document.getElementById('sidebarTitle').textContent = isStudent ? 'Thông tin sinh viên' : 'Thông tin Tutor';
+      }
+
+      // Hàm tìm kiếm
+      function searchDocuments(searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') {
+          return documentsData;
+        }
+
+        const term = searchTerm.toLowerCase().trim();
+        const results = [];
+
+        documentsData.forEach(subject => {
+          // Kiểm tra tìm theo mã môn học
+          const matchByCode = subject.subjectCode.toLowerCase().includes(term);
+          
+          // Kiểm tra tìm theo tên môn học
+          const matchByName = subject.subjectName.toLowerCase().includes(term);
+          
+          // Kiểm tra tìm theo tên tài liệu
+          const matchingDocs = subject.documents.filter(doc => 
+            doc.name.toLowerCase().includes(term)
+          );
+
+          // Nếu tìm thấy theo mã môn học hoặc tên môn học: hiển thị tất cả tài liệu của môn đó
+          if (matchByCode || matchByName) {
+            results.push(subject);
+          } 
+          // Nếu tìm thấy theo tên tài liệu: chỉ hiển thị các tài liệu khớp
+          else if (matchingDocs.length > 0) {
+            results.push({
+              ...subject,
+              documents: matchingDocs
+            });
+          }
+        });
+
+        return results;
+      }
+
+      // Hàm render danh sách tài liệu
+      function renderDocuments(data) {
+        if (!data || data.length === 0) {
+          documentsContainer.innerHTML = '';
+          noResultsMessage.classList.remove('hidden');
+          return;
+        }
+
+        noResultsMessage.classList.add('hidden');
+        
+        documentsContainer.innerHTML = data.map(subject => `
+          <div class="mb-6 bg-white rounded-lg shadow-sm overflow-hidden">
+            <!-- Header môn học -->
+            <div class="bg-[#3c8dbc] px-4 sm:px-6 py-3 sm:py-4">
+              <h2 class="font-bold text-[18px] sm:text-[20px] lg:text-[22px] text-white">
+                ${subject.subjectName} (${subject.subjectCode})
+              </h2>
+            </div>
+            
+            <!-- Danh sách tài liệu -->
+            <div class="p-4 sm:p-6">
+              <div class="space-y-3">
+                ${subject.documents.map(doc => `
+                  <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="flex-1">
+                      <div class="font-bold text-[16px] sm:text-[18px] text-black mb-1">
+                        ${doc.name}
+                      </div>
+                      <div class="text-[14px] sm:text-[16px] text-gray-600">
+                        Kích thước: ${doc.size}
+                      </div>
+                    </div>
+                    <button 
+                      onclick="downloadDocument(${doc.id}, '${doc.fileName}')" 
+                      class="px-4 sm:px-6 py-2 bg-[#3c8dbc] text-white font-bold text-[14px] sm:text-[16px] rounded-lg hover:bg-[#367fa9] transition-colors whitespace-nowrap w-full sm:w-auto"
+                    >
+                      ⬇ Tải xuống
+                    </button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Hàm download tài liệu
+      function downloadDocument(docId, fileName) {
+        // TODO: Thay thế bằng API call thực tế
+        alert(`Đang tải xuống: ${fileName}\n\n(Tính năng này sẽ được kết nối với backend)`);
+        // Ví dụ: window.location.href = `/api/documents/download/${docId}`;
+      }
+
+      // Expose function to global scope để onclick hoạt động
+      window.downloadDocument = downloadDocument;
+
+      // Event listeners
+      searchBtn.addEventListener('click', () => {
+        const searchTerm = searchInput.value;
+        const filteredData = searchDocuments(searchTerm);
+        renderDocuments(filteredData);
+      });
+
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const searchTerm = searchInput.value;
+          const filteredData = searchDocuments(searchTerm);
+          renderDocuments(filteredData);
+        }
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        renderDocuments(documentsData);
+      });
+
+      // Khởi tạo
+      adjustUIForRole();
+      renderDocuments(documentsData);
+
+      // Navigation handlers
+      function navigateToPage(page) {
+        const roleParam = userRole ? `?role=${userRole}` : '';
+        window.location.href = `${page}${roleParam}`;
+      }
+
+      // Nút "Trở về trang trước" - về HomePage
+      const backButton = document.querySelector('.frame .cursor-pointer');
+      if (backButton) {
+        backButton.addEventListener('click', () => {
+          navigateToPage('HomePage.html');
+        });
+      }
+
+      // Sidebar navigation
+      document.querySelector('.row').addEventListener('click', () => {
+        navigateToPage('Student schedule.html');
+      });
+
+      document.querySelector('.row-2').addEventListener('click', () => {
+        navigateToPage('Library.html');
+      });
+
+      document.querySelector('.row-3').addEventListener('click', () => {
+        navigateToPage('HomePage.html');
+      });
+
+      document.querySelector('.row-4').addEventListener('click', () => {
+        navigateToPage('Profile.html');
+      });
+    </script>
+  </body>
+</html>
+

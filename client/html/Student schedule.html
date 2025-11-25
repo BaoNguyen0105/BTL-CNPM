@@ -1,8 +1,122 @@
-<!--
-Student schedule:
-    1. Show all tutor
-    2. User chooses a tutor
-    3. Show tutor's schedule
-    4. User makes schedule with tutor
-    5. Notify tutor
--->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/globals.css" />
+    <link rel="stylesheet" href="../css/styleguide.css" />
+    <link rel="stylesheet" href="../css/Profile.css" />
+  </head>
+  <body>
+    <div class="khai-thongtincanhan">
+      <div class="top-bar">
+        <div class="background"></div>
+        <div class="logo"></div>
+        <p class="name">
+          <span class="text-wrapper">NGUYỄN VĂN A | </span> 
+          <span class="span" id="roleDisplay">Sinh viên</span>
+        </p>
+        <div class="div">Tutor System</div>
+        <div class="text-wrapper-2">☰</div>
+        <img class="bk-logo" src="../images/logo.png" />
+      </div>
+      <div class="frame">
+        <div class="w-full h-[82px] bg-[#d9d9d9] flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 sm:px-6 py-2 sm:py-0 gap-2 sm:gap-0">
+          <span class="font-bold text-[16px] sm:text-[20px] text-black cursor-pointer">← Trở về trang trước</span>
+        </div>
+      </div>
+      <div class="side-bar">
+        <div class="background-2"></div>
+        <div class="row">
+          <div class="text-wrapper-5">☰</div>
+          <div class="text">Buổi học</div>
+          <div class="text-wrapper-6">&gt;</div>
+        </div>
+        <div class="row-2">
+          <div class="text-wrapper-5">☰</div>
+          <div class="text">Thư viện</div>
+          <div class="text-wrapper-6">&gt;</div>
+        </div>
+        <div class="row-3">
+          <div class="text-wrapper-7">☰</div>
+          <div class="text-2">Trang chủ</div>
+          <div class="text-wrapper-8">&gt;</div>
+        </div>
+        <div class="row-4">
+          <div class="text-3" id="sidebarTitle">Thông tin sinh viên</div>
+          <div class="text-wrapper-9">&gt;</div>
+          <div class="text-wrapper-10">☰</div>
+        </div>
+      </div>
+      <div class="MAIN-CONTENT">
+        <div class="w-full min-h-screen bg-[#fbfafa] p-4 sm:p-6">
+          <!-- Section: Tiêu đề -->
+          <div class="w-full h-auto min-h-[65px] bg-[#3c8dbc] flex items-center px-4 sm:px-6 py-4 mb-4">
+            <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-white">Buổi học</span>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm p-4 sm:p-6">
+            <p class="text-[16px] sm:text-[18px] text-gray-600">
+              Trang buổi học đang được phát triển...
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <div class="background-3"></div>
+        <p class="disclaimer">
+          <span class="text-wrapper-37">This is a third party software.<br /></span>
+          <span class="text-wrapper-38">All rights belong to Ho Chi Minh University of Technology</span>
+        </p>
+        <p class="version"><span class="text-wrapper-39">Version </span> <span class="text-wrapper-40">0.1.0</span></p>
+      </div>
+    </div>
+
+    <script>
+      // Xác định role từ URL parameter hoặc mặc định là 'student'
+      const urlParams = new URLSearchParams(window.location.search);
+      const userRole = urlParams.get('role') || 'student';
+      
+      // Hàm điều chỉnh giao diện theo role
+      function adjustUIForRole() {
+        const isStudent = userRole === 'student';
+        document.getElementById('roleDisplay').textContent = isStudent ? 'Sinh viên' : 'Tutor';
+        document.getElementById('sidebarTitle').textContent = isStudent ? 'Thông tin sinh viên' : 'Thông tin Tutor';
+      }
+
+      // Khởi tạo giao diện
+      adjustUIForRole();
+
+      // Navigation handlers
+      function navigateToPage(page) {
+        const roleParam = userRole ? `?role=${userRole}` : '';
+        window.location.href = `${page}${roleParam}`;
+      }
+
+      // Nút "Trở về trang trước" - về HomePage
+      const backButton = document.querySelector('.frame .cursor-pointer');
+      if (backButton) {
+        backButton.addEventListener('click', () => {
+          navigateToPage('HomePage.html');
+        });
+      }
+
+      // Sidebar navigation
+      document.querySelector('.row').addEventListener('click', () => {
+        navigateToPage('Student schedule.html');
+      });
+
+      document.querySelector('.row-2').addEventListener('click', () => {
+        navigateToPage('Library.html');
+      });
+
+      document.querySelector('.row-3').addEventListener('click', () => {
+        navigateToPage('HomePage.html');
+      });
+
+      document.querySelector('.row-4').addEventListener('click', () => {
+        navigateToPage('Profile.html');
+      });
+    </script>
+  </body>
+</html>

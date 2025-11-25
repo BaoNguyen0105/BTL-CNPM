@@ -1220,4 +1220,10 @@
   .autocomplete-item:last-child {
     border-bottom: none;
   }
+
+  /* Role-based visibility */
+  .student-only,
+  .tutor-only {
+    display: none;
+  }
   
