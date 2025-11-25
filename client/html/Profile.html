@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/globals.css" />
     <link rel="stylesheet" href="../css/styleguide.css" />
-    <link rel="stylesheet" href="../css/Profile.css" />
+    <link rel="stylesheet" href="../css/Style.css" />
   </head>
   <body>
     <div class="khai-thongtincanhan">
@@ -32,21 +32,9 @@
       </div>
       <div class="side-bar">
         <div class="background-2"></div>
-        <div class="row">
-          <div class="text-wrapper-5">☰</div>
-          <div class="text">Buổi học</div>
-          <div class="text-wrapper-6">&gt;</div>
-        </div>
-        <div class="row-2">
-          <div class="text-wrapper-5">☰</div>
-          <div class="text">Thư viện</div>
-          <div class="text-wrapper-6">&gt;</div>
-        </div>
-        <div class="row-3">
-          <div class="text-wrapper-7">☰</div>
-          <div class="text-2">Trang chủ</div>
-          <div class="text-wrapper-8">&gt;</div>
-        </div>
+        <div class="row"><div class="text-wrapper-5">☰</div><div class="text">Buổi học</div><div class="text-wrapper-6">&gt;</div></div>
+        <div class="row-2"><div class="text-wrapper-5">☰</div><div class="text">Thư viện</div><div class="text-wrapper-6">&gt;</div></div>
+        <div class="row-3"><div class="text-wrapper-7">☰</div><div class="text-2">Trang chủ</div><div class="text-wrapper-8">&gt;</div></div>
         <div class="row-4">
           <div class="text-3" id="sidebarTitle">Thông tin sinh viên</div>
           <div class="text-wrapper-9">&gt;</div>
@@ -54,9 +42,7 @@
         </div>
       </div>
       <div class="MAIN-CONTENT">
-        <!-- Container chính với background #fbfafa -->
         <div class="w-full min-h-screen bg-[#fbfafa] p-4 sm:p-6">
-          <!-- Section: Thông tin cá nhân -->
           <div class="w-full h-auto min-h-[65px] bg-[#3c8dbc] flex items-center px-4 sm:px-6 py-4 mb-4">
             <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-white">Thông tin cá nhân</span>
           </div>
@@ -144,9 +130,7 @@
 
           <div class="mb-6">
             <div class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black mb-2" id="supportTitle">Nhu cầu</div>
-            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black whitespace-pre-line" id="supportDisplay">
-              <!-- Danh sách sẽ được hiển thị bằng JavaScript -->
-            </div>
+            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black whitespace-pre-line" id="supportDisplay"></div>
           </div>
 
           <!-- Section: Lịch rảnh (Tutor only) -->
@@ -164,9 +148,7 @@
                     <th class="border border-gray-300 px-4 py-2 text-left font-bold text-[16px] sm:text-[18px] lg:text-[20px]">Tuần</th>
                   </tr>
                 </thead>
-                <tbody id="scheduleTableBody">
-                  <!-- Dữ liệu sẽ được thêm bằng JavaScript -->
-                </tbody>
+                <tbody id="scheduleTableBody"></tbody>
               </table>
             </div>
           </div>
@@ -177,9 +159,7 @@
           </div>
 
           <div class="mb-6 tutor-only" id="referenceMaterialsContainer">
-            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black" id="referenceMaterials">
-              <!-- Danh sách tài liệu sẽ được hiển thị bằng JavaScript -->
-            </div>
+            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black" id="referenceMaterials"></div>
           </div>
 
           <!-- Section: Đánh giá và thống kê -->
@@ -243,9 +223,7 @@
 
         <div class="modal-section">
           <div class="section-title" id="modalSupportListTitle">Danh sách nhu cầu hỗ trợ</div>
-          <div class="support-list" id="supportList">
-            <!-- Danh sách sẽ được thêm bằng JavaScript -->
-          </div>
+          <div class="support-list" id="supportList"></div>
         </div>
 
         <!-- Section: Lịch rảnh (Tutor only) -->
@@ -279,9 +257,7 @@
 
         <div class="modal-section tutor-only" id="modalScheduleListSection">
           <div class="section-title">Danh sách lịch rảnh</div>
-          <div class="support-list" id="scheduleList">
-            <!-- Danh sách sẽ được thêm bằng JavaScript -->
-          </div>
+          <div class="support-list" id="scheduleList"></div>
         </div>
 
         <div class="modal-actions">
@@ -292,25 +268,9 @@
     </div>
 
     <script>
-      // Xác định role từ URL parameter hoặc mặc định là 'student'
       const urlParams = new URLSearchParams(window.location.search);
-      const userRole = urlParams.get('role') || 'student'; // 'student' hoặc 'tutor'
-      
-      // Danh sách môn học có sẵn
-      const subjectsList = [
-        'Lập trình Web (CO3049)',
-        'Mạng máy tính (CO3093)',
-        'Nguyên lý ngôn ngữ lập trình (CO3005)',
-        'Tư vấn',
-        'Cấu trúc dữ liệu và giải thuật (CO2003)',
-        'Cơ sở dữ liệu (CO2010)',
-        'Hệ điều hành (CO2007)',
-        'Lập trình hướng đối tượng (CO2004)',
-        'Toán rời rạc (MA1003)',
-        'Xác suất thống kê (MA1004)'
-      ];
-
-      // Dữ liệu nhu cầu hỗ trợ/hỗ trợ
+      const userRole = urlParams.get('role') || 'student';
+      const subjectsList = ['Lập trình Web (CO3049)', 'Mạng máy tính (CO3093)', 'Nguyên lý ngôn ngữ lập trình (CO3005)', 'Tư vấn', 'Cấu trúc dữ liệu và giải thuật (CO2003)', 'Cơ sở dữ liệu (CO2010)', 'Hệ điều hành (CO2007)', 'Lập trình hướng đối tượng (CO2004)', 'Toán rời rạc (MA1003)', 'Xác suất thống kê (MA1004)'];
       let supportNeeds = userRole === 'student' ? [
         { title: 'Hướng dẫn thiết kế UI', subject: 'Lập trình Web (CO3049)' },
         { title: 'Ôn cuối kỳ Mạng máy tính', subject: 'Mạng máy tính (CO3093)' },
@@ -326,20 +286,8 @@
         { title: 'Ôn cuối kì Mạng máy tính', subject: 'Mạng máy tính (CO3093)' },
         { title: 'Hướng dẫn BTL3 PPL', subject: 'Nguyên lý ngôn ngữ lập trình (CO3005)' }
       ];
-
-      // Dữ liệu lịch rảnh (chỉ cho tutor)
-      let scheduleList = [
-        { day: '2', time: '7-9', weeks: '1-2-14-16' }
-      ];
-
-      // Dữ liệu tài liệu tham khảo (chỉ cho tutor)
-      const referenceMaterials = [
-        'Tài liệu 1: Hướng dẫn lập trình Web',
-        'Tài liệu 2: Giáo trình Mạng máy tính',
-        'Tài liệu 3: Slide bài giảng PPL'
-      ];
-
-      // DOM Elements
+      let scheduleList = [{ day: '2', time: '7-9', weeks: '1-2-14-16' }];
+      const referenceMaterials = ['Tài liệu 1: Hướng dẫn lập trình Web', 'Tài liệu 2: Giáo trình Mạng máy tính', 'Tài liệu 3: Slide bài giảng PPL'];
       const editModal = document.getElementById('editModal');
       const editInfoBtn = document.getElementById('editInfoBtn');
       const cancelBtn = document.getElementById('cancelBtn');
@@ -358,20 +306,10 @@
       const scheduleWeeks = document.getElementById('scheduleWeeks');
       const referenceMaterialsEl = document.getElementById('referenceMaterials');
 
-      // Hàm điều chỉnh giao diện theo role
-      function adjustUIForRole() {
+      const adjustUIForRole = () => {
         const isStudent = userRole === 'student';
-        const isTutor = userRole === 'tutor';
-
-        // Ẩn/hiện các phần tử theo role
-        document.querySelectorAll('.student-only').forEach(el => {
-          el.style.display = isStudent ? 'block' : 'none';
-        });
-        document.querySelectorAll('.tutor-only').forEach(el => {
-          el.style.display = isTutor ? 'block' : 'none';
-        });
-
-        // Cập nhật text theo role
+        document.querySelectorAll('.student-only').forEach(el => el.style.display = isStudent ? 'block' : 'none');
+        document.querySelectorAll('.tutor-only').forEach(el => el.style.display = !isStudent ? 'block' : 'none');
         document.getElementById('roleDisplay').textContent = isStudent ? 'Sinh viên' : 'Tutor';
         document.getElementById('sidebarTitle').textContent = isStudent ? 'Thông tin sinh viên' : 'Thông tin Tutor';
         document.getElementById('codeLabel').textContent = isStudent ? 'Mã số sinh viên' : 'Mã số tutor';
@@ -387,130 +325,64 @@
         document.getElementById('statValue').textContent = '19';
         document.getElementById('commentLabel').textContent = isStudent ? 'Nhận xét của Tutor' : 'Nhận xét';
         document.getElementById('avatarAlt').alt = isStudent ? 'Ảnh sinh viên' : 'Ảnh tutor';
-
-        // Cập nhật placeholder
         supportTitle.placeholder = isStudent ? 'Nhập tiêu đề nhu cầu hỗ trợ' : 'Nhập tiêu đề hỗ trợ';
-
-        // Cập nhật nhận xét
         const commentsList = document.getElementById('commentsList');
-        if (isStudent) {
-          commentsList.innerHTML = `
-            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Chăm chỉ - Tutor A</div>
-            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Hoàn thành tốt - Tutor B</div>
-          `;
-        } else {
-          commentsList.innerHTML = `
-            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Tận tâm - Sinh viên A</div>
-            <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Nhiệt huyết - Sinh viên B</div>
-          `;
-        }
-      }
-
-      // Khởi tạo giao diện
+        commentsList.innerHTML = isStudent ? '<div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Chăm chỉ - Tutor A</div><div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Hoàn thành tốt - Tutor B</div>' : '<div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Tận tâm - Sinh viên A</div><div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black">Nhiệt huyết - Sinh viên B</div>';
+      };
       adjustUIForRole();
 
-      // Mở modal
       editInfoBtn.addEventListener('click', () => {
         editModal.style.display = 'flex';
         renderSupportList();
-        if (userRole === 'tutor') {
-          renderScheduleList();
-        }
+        if (userRole === 'tutor') renderScheduleList();
       });
-
-      // Đóng modal
-      cancelBtn.addEventListener('click', () => {
-        editModal.style.display = 'none';
-        resetForm();
-      });
-
-      // Đóng modal khi click bên ngoài
-      editModal.addEventListener('click', (e) => {
-        if (e.target === editModal) {
-          editModal.style.display = 'none';
-          resetForm();
-        }
-      });
-
-      // Autocomplete cho môn học
+      cancelBtn.addEventListener('click', () => { editModal.style.display = 'none'; resetForm(); });
+      editModal.addEventListener('click', (e) => { if (e.target === editModal) { editModal.style.display = 'none'; resetForm(); } });
       supportSubject.addEventListener('input', (e) => {
         const value = e.target.value.toLowerCase().trim();
-        if (value === '') {
-          subjectDropdown.style.display = 'none';
-          return;
-        }
-
-        const filtered = subjectsList.filter(subject => 
-          subject.toLowerCase().includes(value)
-        );
-
+        if (value === '') { subjectDropdown.style.display = 'none'; return; }
+        const filtered = subjectsList.filter(subject => subject.toLowerCase().includes(value));
         if (filtered.length > 0) {
-          subjectDropdown.innerHTML = filtered.map(subject => 
-            `<div class="autocomplete-item" data-value="${subject}">${subject}</div>`
-          ).join('');
+          subjectDropdown.innerHTML = filtered.map(subject => `<div class="autocomplete-item" data-value="${subject}">${subject}</div>`).join('');
           subjectDropdown.style.display = 'block';
-        } else {
-          subjectDropdown.style.display = 'none';
-        }
+        } else subjectDropdown.style.display = 'none';
       });
-
-      // Chọn môn học từ dropdown
       subjectDropdown.addEventListener('click', (e) => {
         if (e.target.classList.contains('autocomplete-item')) {
           supportSubject.value = e.target.getAttribute('data-value');
           subjectDropdown.style.display = 'none';
         }
       });
-
-      // Ẩn dropdown khi click ra ngoài
       document.addEventListener('click', (e) => {
         const autocompleteWrapper = supportSubject.closest('.autocomplete-wrapper');
-        if (!autocompleteWrapper.contains(e.target)) {
-          subjectDropdown.style.display = 'none';
-        }
+        if (!autocompleteWrapper.contains(e.target)) subjectDropdown.style.display = 'none';
       });
-
-      // Thêm nhu cầu hỗ trợ/hỗ trợ
       addSupportBtn.addEventListener('click', () => {
         const title = supportTitle.value.trim();
         const subject = supportSubject.value.trim();
-
-        if (title === '' || subject === '') {
-          alert('Vui lòng nhập đầy đủ tiêu đề và môn học');
-          return;
-        }
-
+        if (title === '' || subject === '') { alert('Vui lòng nhập đầy đủ tiêu đề và môn học'); return; }
         supportNeeds.push({ title, subject });
         renderSupportList();
         resetSupportForm();
       });
-
-      // Thêm lịch rảnh (chỉ cho tutor)
       if (addScheduleBtn) {
         addScheduleBtn.addEventListener('click', () => {
           const day = scheduleDay.value.trim();
           const time = scheduleTime.value.trim();
           const weeks = scheduleWeeks.value.trim();
-
-          if (day === '' || time === '' || weeks === '') {
-            alert('Vui lòng nhập đầy đủ thông tin lịch rảnh');
-            return;
-          }
-
+          if (day === '' || time === '' || weeks === '') { alert('Vui lòng nhập đầy đủ thông tin lịch rảnh'); return; }
           scheduleList.push({ day, time, weeks });
           renderScheduleList();
           resetScheduleForm();
         });
       }
 
-      // Render danh sách nhu cầu hỗ trợ/hỗ trợ trong modal
-      function renderSupportList() {
+      const renderSupportList = () => {
         if (supportNeeds.length === 0) {
           const emptyText = userRole === 'student' ? 'Chưa có nhu cầu hỗ trợ nào' : 'Chưa có hỗ trợ nào';
           supportListEl.innerHTML = `<div style="padding: 20px; text-align: center; color: #999;">${emptyText}</div>`;
           return;
         }
-
         supportListEl.innerHTML = supportNeeds.map((item, index) => `
           <div class="support-item">
             <div class="support-item-title">${item.title}</div>
@@ -520,17 +392,13 @@
             </div>
           </div>
         `).join('');
-      }
-
-      // Render danh sách lịch rảnh trong modal (chỉ cho tutor)
-      function renderScheduleList() {
+      };
+      const renderScheduleList = () => {
         if (!scheduleListEl) return;
-        
         if (scheduleList.length === 0) {
           scheduleListEl.innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">Chưa có lịch rảnh nào</div>';
           return;
         }
-
         scheduleListEl.innerHTML = scheduleList.map((item, index) => `
           <div class="support-item">
             <div class="support-item-title">Thứ ${item.day} - ${item.time}</div>
@@ -540,69 +408,37 @@
             </div>
           </div>
         `).join('');
-      }
-
-      // Xử lý xóa bằng event delegation
+      };
       supportListEl.addEventListener('click', (e) => {
         if (e.target.classList.contains('btn-delete') && e.target.getAttribute('data-type') === 'support') {
-          const index = parseInt(e.target.getAttribute('data-index'));
-          supportNeeds.splice(index, 1);
+          supportNeeds.splice(parseInt(e.target.getAttribute('data-index')), 1);
           renderSupportList();
         }
       });
-
       if (scheduleListEl) {
         scheduleListEl.addEventListener('click', (e) => {
           if (e.target.classList.contains('btn-delete') && e.target.getAttribute('data-type') === 'schedule') {
-            const index = parseInt(e.target.getAttribute('data-index'));
-            scheduleList.splice(index, 1);
+            scheduleList.splice(parseInt(e.target.getAttribute('data-index')), 1);
             renderScheduleList();
           }
         });
       }
-
-      // Reset form hỗ trợ
-      function resetSupportForm() {
-        supportTitle.value = '';
-        supportSubject.value = '';
-        subjectDropdown.style.display = 'none';
-      }
-
-      // Reset form lịch
-      function resetScheduleForm() {
-        if (scheduleDay) scheduleDay.value = '';
-        if (scheduleTime) scheduleTime.value = '';
-        if (scheduleWeeks) scheduleWeeks.value = '';
-      }
-
-      // Reset tất cả form
-      function resetForm() {
-        resetSupportForm();
-        resetScheduleForm();
-      }
-
-      // Render danh sách nhu cầu hỗ trợ/hỗ trợ trên trang chính
-      function renderSupportDisplay() {
+      const resetSupportForm = () => { supportTitle.value = ''; supportSubject.value = ''; subjectDropdown.style.display = 'none'; };
+      const resetScheduleForm = () => { if (scheduleDay) scheduleDay.value = ''; if (scheduleTime) scheduleTime.value = ''; if (scheduleWeeks) scheduleWeeks.value = ''; };
+      const resetForm = () => { resetSupportForm(); resetScheduleForm(); };
+      const renderSupportDisplay = () => {
         if (supportNeeds.length === 0) {
-          const emptyText = userRole === 'student' ? 'Chưa có nhu cầu hỗ trợ nào' : 'Chưa có hỗ trợ nào';
-          supportDisplay.textContent = emptyText;
+          supportDisplay.textContent = userRole === 'student' ? 'Chưa có nhu cầu hỗ trợ nào' : 'Chưa có hỗ trợ nào';
           return;
         }
-
-        supportDisplay.textContent = supportNeeds.map(item => 
-          `${item.title} - ${item.subject}`
-        ).join('\n\n');
-      }
-
-      // Render bảng lịch rảnh trên trang chính (chỉ cho tutor)
-      function renderScheduleTable() {
+        supportDisplay.textContent = supportNeeds.map(item => `${item.title} - ${item.subject}`).join('\n\n');
+      };
+      const renderScheduleTable = () => {
         if (!scheduleTableBody) return;
-        
         if (scheduleList.length === 0) {
           scheduleTableBody.innerHTML = '<tr><td colspan="3" class="border border-gray-300 px-4 py-2 text-center text-gray-500">Chưa có lịch rảnh nào</td></tr>';
           return;
         }
-
         scheduleTableBody.innerHTML = scheduleList.map(item => `
           <tr>
             <td class="border border-gray-300 px-4 py-2 font-normal text-[16px] sm:text-[18px] lg:text-[20px]">Thứ ${item.day}</td>
@@ -610,74 +446,28 @@
             <td class="border border-gray-300 px-4 py-2 font-normal text-[16px] sm:text-[18px] lg:text-[20px]">${item.weeks}</td>
           </tr>
         `).join('');
-      }
-
-      // Render tài liệu tham khảo (chỉ cho tutor)
-      function renderReferenceMaterials() {
+      };
+      const renderReferenceMaterials = () => {
         if (!referenceMaterialsEl) return;
-        
-        if (referenceMaterials.length === 0) {
-          referenceMaterialsEl.textContent = 'Chưa có tài liệu tham khảo nào';
-          return;
-        }
-
-        referenceMaterialsEl.innerHTML = referenceMaterials.map(material => 
-          `<div class="mb-2">${material}</div>`
-        ).join('');
-      }
-
-      // Lưu thay đổi
+        if (referenceMaterials.length === 0) { referenceMaterialsEl.textContent = 'Chưa có tài liệu tham khảo nào'; return; }
+        referenceMaterialsEl.innerHTML = referenceMaterials.map(material => `<div class="mb-2">${material}</div>`).join('');
+      };
       saveBtn.addEventListener('click', () => {
-        // TODO: Gửi dữ liệu lên server
         alert('Đã lưu thay đổi thành công!');
         editModal.style.display = 'none';
         resetForm();
-        // Cập nhật lại danh sách trên trang chính
         renderSupportDisplay();
-        if (userRole === 'tutor') {
-          renderScheduleTable();
-        }
+        if (userRole === 'tutor') renderScheduleTable();
       });
-
-      // Khởi tạo danh sách ban đầu
       renderSupportList();
-      if (userRole === 'tutor') {
-        renderScheduleList();
-        renderScheduleTable();
-        renderReferenceMaterials();
-      }
+      if (userRole === 'tutor') { renderScheduleList(); renderScheduleTable(); renderReferenceMaterials(); }
       renderSupportDisplay();
-
-      // Navigation handlers
-      function navigateToPage(page) {
-        const roleParam = userRole ? `?role=${userRole}` : '';
-        window.location.href = `${page}${roleParam}`;
-      }
-
-      // Nút "Trở về trang trước" - về HomePage
-      const backButton = document.querySelector('.frame .cursor-pointer');
-      if (backButton) {
-        backButton.addEventListener('click', () => {
-          navigateToPage('HomePage.html');
-        });
-      }
-
-      // Sidebar navigation
-      document.querySelector('.row').addEventListener('click', () => {
-        navigateToPage('Student schedule.html');
-      });
-
-      document.querySelector('.row-2').addEventListener('click', () => {
-        navigateToPage('Library.html');
-      });
-
-      document.querySelector('.row-3').addEventListener('click', () => {
-        navigateToPage('HomePage.html');
-      });
-
-      document.querySelector('.row-4').addEventListener('click', () => {
-        navigateToPage('Profile.html');
-      });
+      const navigateToPage = (page) => { window.location.href = `${page}${userRole ? `?role=${userRole}` : ''}`; };
+      document.querySelector('.frame .cursor-pointer').addEventListener('click', () => navigateToPage('HomePage.html'));
+      document.querySelector('.row').addEventListener('click', () => navigateToPage('Student schedule.html'));
+      document.querySelector('.row-2').addEventListener('click', () => navigateToPage('Library.html'));
+      document.querySelector('.row-3').addEventListener('click', () => navigateToPage('HomePage.html'));
+      document.querySelector('.row-4').addEventListener('click', () => navigateToPage('Profile.html'));
     </script>
   </body>
 </html>
