@@ -20,29 +20,19 @@ function setMessage(msg, isError = true) {
   messageEl.style.color = isError ? "red" : "green";
 }
 
-function escapeHtml(str) {
-  return String(str ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
 // ===== API =====
 async function apiGetAvailableSessions() {
   const res = await fetch(`${API_BASE}/sessions/available`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, // backend có check thì dùng, không thì cũng không sao
+      Authorization: `Bearer ${token}`,
     },
   });
 
   const data = await res.json().catch(() => ({}));
   if (!res.ok || data?.error) throw new Error(data?.error || `HTTP ${res.status}`);
 
-  // backend có thể trả: [..] hoặc { success:true, data:[..] }
   return Array.isArray(data) ? data : (data.data || []);
 }
 
@@ -61,7 +51,7 @@ async function apiRegisterSession(sessionId) {
   return data;
 }
 
-// ===== Render (đổ data vào tbody) =====
+// ===== Render (đổ data vào thẳng body sched-session-list ở HTML luôn nha) =====
 function renderSessions(rows) {
   if (!listBody) return;
 
@@ -90,7 +80,8 @@ function renderSessions(rows) {
   `).join("");
 }
 
-// ===== Events (bắt click nút Chọn bằng event delegation) =====
+// ===== Events =====
+// Đăng ký buổi học
 document.addEventListener("click", async (e) => {
   const btn = e.target.closest(".sched-register-btn");
   if (!btn) return;
