@@ -208,7 +208,7 @@
     position: absolute;
     top: 245px;
     left: 1px;
-    width: 426px;
+    width: 420px;
     height: 91px;
     display: flex;
   }
@@ -261,7 +261,7 @@
     position: absolute;
     top: 160px;
     left: 1px;
-    width: 426px;
+    width: 420px;
     height: 91px;
     display: flex;
   }
@@ -270,7 +270,7 @@
     position: absolute;
     top: 0;
     left: 1px;
-    width: 426px;
+    width: 420px;
     height: 85px;
     display: flex;
   }
@@ -325,6 +325,21 @@
     left: 0;
     width: 420px;
     height: 86px;
+  }
+
+  .khai-thongtincanhan .row-5 {
+    position: absolute;
+    top: 330px;
+    left: 1px;
+    width: 420px;
+    height: 91px;
+    display: flex;
+  }
+
+  .khai-thongtincanhan .row.active,
+  .khai-thongtincanhan .row-2.active,
+  .khai-thongtincanhan .row-3.active,
+  .khai-thongtincanhan .row-4.active {
     background-color: #000000;
   }
   

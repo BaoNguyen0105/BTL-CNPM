@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/globals.css" />
     <link rel="stylesheet" href="../css/styleguide.css" />
-    <link rel="stylesheet" href="../css/Profile.css" />
+    <link rel="stylesheet" href="../css/Style.css" />
   </head>
   <body>
     <div class="khai-thongtincanhan">
@@ -23,7 +23,7 @@
       </div>
       <div class="frame">
         <div class="w-full h-[82px] bg-[#d9d9d9] flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 sm:px-6 py-2 sm:py-0 gap-2 sm:gap-0">
-          <span class="font-bold text-[16px] sm:text-[20px] text-black cursor-pointer">← Trở về trang trước</span>
+          <span class="font-bold text-[16px] sm:text-[20px] text-black cursor-pointer">← Trở về trang chủ</span>
         </div>
       </div>
       <div class="side-bar">
@@ -48,6 +48,7 @@
           <div class="text-wrapper-9">&gt;</div>
           <div class="text-wrapper-10">☰</div>
         </div>
+        <div class="row-5"><div class="text-wrapper-5">☰</div><div class="text">Đăng xuất</div><div class="text-wrapper-6">&gt;</div></div>
       </div>
       <div class="MAIN-CONTENT">
         <div class="w-full min-h-screen bg-[#fbfafa] p-4 sm:p-6">
@@ -101,21 +102,59 @@
         });
       }
 
-      // Sidebar navigation
-      document.querySelector('.row').addEventListener('click', () => {
+      // Sidebar navigation với active state
+      const sidebarItems = document.querySelectorAll('.row, .row-2, .row-3, .row-4');
+      
+      const removeActiveClass = () => {
+        sidebarItems.forEach(item => item.classList.remove('active'));
+      };
+      
+      const setActiveItem = (item) => {
+        removeActiveClass();
+        if (item) item.classList.add('active');
+      };
+      
+      const setActiveByPage = () => {
+        const currentPage = window.location.pathname.split('/').pop() || 'Student schedule.html';
+        if (currentPage.includes('Student schedule')) {
+          setActiveItem(document.querySelector('.row'));
+        } else if (currentPage.includes('Library')) {
+          setActiveItem(document.querySelector('.row-2'));
+        } else if (currentPage.includes('HomePage')) {
+          setActiveItem(document.querySelector('.row-3'));
+        } else if (currentPage.includes('Profile')) {
+          setActiveItem(document.querySelector('.row-4'));
+        }
+      };
+      
+      setActiveByPage();
+      
+      const logout = () => {
+        window.location.href = 'Login.html';
+      };
+      
+      document.querySelector('.row').addEventListener('click', function() {
+        setActiveItem(this);
         navigateToPage('Student schedule.html');
       });
 
-      document.querySelector('.row-2').addEventListener('click', () => {
+      document.querySelector('.row-2').addEventListener('click', function() {
+        setActiveItem(this);
         navigateToPage('Library.html');
       });
 
-      document.querySelector('.row-3').addEventListener('click', () => {
+      document.querySelector('.row-3').addEventListener('click', function() {
+        setActiveItem(this);
         navigateToPage('HomePage.html');
       });
 
-      document.querySelector('.row-4').addEventListener('click', () => {
+      document.querySelector('.row-4').addEventListener('click', function() {
+        setActiveItem(this);
         navigateToPage('Profile.html');
+      });
+      
+      document.querySelector('.row-5').addEventListener('click', function() {
+        logout();
       });
     </script>
   </body>

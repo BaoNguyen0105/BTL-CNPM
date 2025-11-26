@@ -23,7 +23,7 @@
       </div>
       <div class="frame">
         <div class="w-full h-[82px] bg-[#d9d9d9] flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 sm:px-6 py-2 sm:py-0 gap-2 sm:gap-0">
-          <span class="font-bold text-[16px] sm:text-[20px] text-black cursor-pointer">← Trở về trang trước</span>
+          <span class="font-bold text-[16px] sm:text-[20px] text-black cursor-pointer">← Trở về trang chủ</span>
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
             <span class="font-bold text-[14px] sm:text-[18px] lg:text-[20px] text-black whitespace-nowrap">Thời điểm cập nhật gần nhất: 29/10/2025 12:50:01</span>
             <span class="font-bold text-[16px] sm:text-[20px] underline text-black cursor-pointer" id="editInfoBtn">Chỉnh sửa thông tin</span>
@@ -40,6 +40,7 @@
           <div class="text-wrapper-9">&gt;</div>
           <div class="text-wrapper-10">☰</div>
         </div>
+        <div class="row-5"><div class="text-wrapper-5">☰</div><div class="text">Đăng xuất</div><div class="text-wrapper-6">&gt;</div></div>
       </div>
       <div class="MAIN-CONTENT">
         <div class="w-full min-h-screen bg-[#fbfafa] p-4 sm:p-6">
@@ -63,46 +64,34 @@
                 <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black" id="codeLabel">Mã số sinh viên</span>
                 <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1" id="codeValue">22115001</div>
               </div>
-              <!-- Student only: Khoa -->
-              <div id="studentKhoa" class="student-only">
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Khoa</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Khoa Khoa học và Kỹ thuật Máy tính</div>
-              </div>
+
             </div>
 
             <!-- Cột 3: Thông tin học tập/chuyên môn -->
             <div class="space-y-4">
-              <!-- Student only: Hệ đào tạo, Chương trình -->
-              <div id="studentHeDaoTao" class="student-only">
+              <!-- Hệ đào tạo (Student & Tutor) -->
+              <div id="heDaoTao">
                 <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Hệ đào tạo</span>
                 <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Chính quy</div>
               </div>
-              <div id="studentChuongTrinh" class="student-only">
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Chương trình</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Chương trình Đại học tiêu chuẩn</div>
-              </div>
-              <!-- Tutor only: Lĩnh vực -->
-              <div id="tutorLinhVuc" class="tutor-only">
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Lĩnh vực</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">Công nghệ phần mềm</div>
+              <!-- Khoa (Student & Tutor) -->
+              <div id="khoa">
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Khoa</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1" id="khoaValue">Khoa Khoa học và Kỹ thuật Máy tính</div>
               </div>
             </div>
 
             <!-- Cột 4: Thông tin khác -->
             <div class="space-y-4">
-              <!-- Student only: Khóa học, Tình trạng sinh viên -->
-              <div id="studentKhoaHoc" class="student-only">
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Khóa học</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">K2022</div>
+              <!-- Student only: Năm nhập học -->
+              <div id="studentNamNhapHoc" class="student-only">
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Năm nhập học</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">2022</div>
               </div>
-              <div>
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black" id="statusLabel">Tình trạng sinh viên</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1" id="statusValue">Đang học</div>
-              </div>
-              <!-- Tutor only: Khoa -->
-              <div id="tutorKhoa" class="tutor-only">
-                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Khoa</span>
-                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1">KH MT</div>
+              <!-- Chuyên ngành (Student & Tutor) -->
+              <div id="chuyenNganh">
+                <span class="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-black">Chuyên ngành</span>
+                <div class="font-normal text-[16px] sm:text-[20px] lg:text-[24px] text-black mt-1" id="chuyenNganhValue">Công nghệ phần mềm</div>
               </div>
             </div>
           </div>
@@ -269,7 +258,7 @@
 
     <script>
       const urlParams = new URLSearchParams(window.location.search);
-      const userRole = urlParams.get('role') || 'student';
+      const userRole = urlParams.get('role') || 'tutor';
       const subjectsList = ['Lập trình Web (CO3049)', 'Mạng máy tính (CO3093)', 'Nguyên lý ngôn ngữ lập trình (CO3005)', 'Tư vấn', 'Cấu trúc dữ liệu và giải thuật (CO2003)', 'Cơ sở dữ liệu (CO2010)', 'Hệ điều hành (CO2007)', 'Lập trình hướng đối tượng (CO2004)', 'Toán rời rạc (MA1003)', 'Xác suất thống kê (MA1004)'];
       let supportNeeds = userRole === 'student' ? [
         { title: 'Hướng dẫn thiết kế UI', subject: 'Lập trình Web (CO3049)' },
@@ -287,7 +276,11 @@
         { title: 'Hướng dẫn BTL3 PPL', subject: 'Nguyên lý ngôn ngữ lập trình (CO3005)' }
       ];
       let scheduleList = [{ day: '2', time: '7-9', weeks: '1-2-14-16' }];
-      const referenceMaterials = ['Tài liệu 1: Hướng dẫn lập trình Web', 'Tài liệu 2: Giáo trình Mạng máy tính', 'Tài liệu 3: Slide bài giảng PPL'];
+      const referenceMaterials = [
+        { title: 'Hướng dẫn lập trình Web', author: 'Nguyễn Văn A', year: 2023 },
+        { title: 'Giáo trình Mạng máy tính', author: 'Trần Thị B', year: 2022 },
+        { title: 'Slide bài giảng PPL', author: 'Lê Văn C', year: 2024 }
+      ];
       const editModal = document.getElementById('editModal');
       const editInfoBtn = document.getElementById('editInfoBtn');
       const cancelBtn = document.getElementById('cancelBtn');
@@ -314,8 +307,8 @@
         document.getElementById('sidebarTitle').textContent = isStudent ? 'Thông tin sinh viên' : 'Thông tin Tutor';
         document.getElementById('codeLabel').textContent = isStudent ? 'Mã số sinh viên' : 'Mã số tutor';
         document.getElementById('codeValue').textContent = isStudent ? '22115001' : '22115xx';
-        document.getElementById('statusLabel').textContent = isStudent ? 'Tình trạng sinh viên' : 'Tình trạng tutor';
-        document.getElementById('statusValue').textContent = isStudent ? 'Đang học' : 'Giảng dạy';
+        document.getElementById('khoaValue').textContent = isStudent ? 'Khoa Khoa học và Kỹ thuật Máy tính' : 'KH MT';
+        document.getElementById('chuyenNganhValue').textContent = isStudent ? 'Công nghệ phần mềm' : 'Công nghệ phần mềm';
         document.getElementById('emailLabel').textContent = isStudent ? 'Email sinh viên' : 'Email tutor';
         document.getElementById('supportSectionTitle').textContent = isStudent ? 'Nhu cầu hỗ trợ' : 'Hỗ trợ';
         document.getElementById('supportTitle').textContent = isStudent ? 'Nhu cầu' : 'Hỗ trợ';
@@ -450,7 +443,12 @@
       const renderReferenceMaterials = () => {
         if (!referenceMaterialsEl) return;
         if (referenceMaterials.length === 0) { referenceMaterialsEl.textContent = 'Chưa có tài liệu tham khảo nào'; return; }
-        referenceMaterialsEl.innerHTML = referenceMaterials.map(material => `<div class="mb-2">${material}</div>`).join('');
+        referenceMaterialsEl.innerHTML = referenceMaterials.map(material => 
+          `<div class="mb-3 p-3 border border-gray-200 rounded-lg">
+            <div class="font-bold text-[16px] sm:text-[18px] lg:text-[20px] text-black mb-1">${material.title}</div>
+            <div class="text-[14px] sm:text-[16px] lg:text-[18px] text-gray-600">Tác giả: ${material.author} | Năm xuất bản: ${material.year}</div>
+          </div>`
+        ).join('');
       };
       saveBtn.addEventListener('click', () => {
         alert('Đã lưu thay đổi thành công!');
@@ -463,11 +461,57 @@
       if (userRole === 'tutor') { renderScheduleList(); renderScheduleTable(); renderReferenceMaterials(); }
       renderSupportDisplay();
       const navigateToPage = (page) => { window.location.href = `${page}${userRole ? `?role=${userRole}` : ''}`; };
+      
+      const sidebarItems = document.querySelectorAll('.row, .row-2, .row-3, .row-4');
+      
+      const removeActiveClass = () => {
+        sidebarItems.forEach(item => item.classList.remove('active'));
+      };
+      
+      const setActiveItem = (item) => {
+        removeActiveClass();
+        if (item) item.classList.add('active');
+      };
+      
+      const setActiveByPage = () => {
+        const currentPage = window.location.pathname.split('/').pop() || 'Profile.html';
+        if (currentPage.includes('Student schedule')) {
+          setActiveItem(document.querySelector('.row'));
+        } else if (currentPage.includes('Library')) {
+          setActiveItem(document.querySelector('.row-2'));
+        } else if (currentPage.includes('HomePage')) {
+          setActiveItem(document.querySelector('.row-3'));
+        } else if (currentPage.includes('Profile')) {
+          setActiveItem(document.querySelector('.row-4'));
+        }
+      };
+      
+      setActiveByPage();
+      
+      const logout = () => {
+        window.location.href = 'Login.html';
+      };
+      
       document.querySelector('.frame .cursor-pointer').addEventListener('click', () => navigateToPage('HomePage.html'));
-      document.querySelector('.row').addEventListener('click', () => navigateToPage('Student schedule.html'));
-      document.querySelector('.row-2').addEventListener('click', () => navigateToPage('Library.html'));
-      document.querySelector('.row-3').addEventListener('click', () => navigateToPage('HomePage.html'));
-      document.querySelector('.row-4').addEventListener('click', () => navigateToPage('Profile.html'));
+      document.querySelector('.row').addEventListener('click', function() {
+        setActiveItem(this);
+        navigateToPage('Student schedule.html');
+      });
+      document.querySelector('.row-2').addEventListener('click', function() {
+        setActiveItem(this);
+        navigateToPage('Library.html');
+      });
+      document.querySelector('.row-3').addEventListener('click', function() {
+        setActiveItem(this);
+        navigateToPage('HomePage.html');
+      });
+      document.querySelector('.row-4').addEventListener('click', function() {
+        setActiveItem(this);
+        navigateToPage('Profile.html');
+      });
+      document.querySelector('.row-5').addEventListener('click', function() {
+        logout();
+      });
     </script>
   </body>
 </html>

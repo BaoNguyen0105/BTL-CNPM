@@ -23,7 +23,7 @@
     </div>
     <div class="frame">
       <div class="w-full h-[82px] bg-[#d9d9d9] flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 sm:px-6 py-2 sm:py-0 gap-2 sm:gap-0">
-        <span class="font-bold text-[16px] sm:text-[20px] text-black cursor-pointer">← Trở về trang trước</span>
+        <span class="font-bold text-[16px] sm:text-[20px] text-black cursor-pointer">← Trở về trang chủ</span>
       </div>
     </div>
     <div class="side-bar">
@@ -36,6 +36,7 @@
         <div class="text-wrapper-9">&gt;</div>
         <div class="text-wrapper-10">☰</div>
       </div>
+      <div class="row-5"><div class="text-wrapper-5">☰</div><div class="text">Đăng xuất</div><div class="text-wrapper-6">&gt;</div></div>
     </div>
     <div class="MAIN-CONTENT">
       <div class="w-full min-h-screen bg-[#fbfafa] p-4 sm:p-6">
@@ -74,48 +75,48 @@
   <script>
     const documentsData = [
       { subjectCode: 'CO3049', subjectName: 'Lập trình Web', documents: [
-        { id: 1, name: 'Giáo trình Lập trình Web - Chương 1', fileName: 'Giao-trinh-LTW-Chuong1.pdf', size: '2.5 MB' },
-        { id: 2, name: 'Slide bài giảng HTML/CSS', fileName: 'Slide-HTML-CSS.pdf', size: '1.8 MB' },
-        { id: 3, name: 'Bài tập thực hành JavaScript', fileName: 'Bai-tap-JavaScript.docx', size: '850 KB' },
-        { id: 4, name: 'Tài liệu tham khảo React', fileName: 'Tai-lieu-React.pdf', size: '3.2 MB' }
+        { id: 1, title: 'Giáo trình Lập trình Web - Chương 1', author: 'Nguyễn Văn A', year: 2023, fileName: 'Giao-trinh-LTW-Chuong1.pdf', size: '2.5 MB' },
+        { id: 2, title: 'Slide bài giảng HTML/CSS', author: 'Trần Thị B', year: 2024, fileName: 'Slide-HTML-CSS.pdf', size: '1.8 MB' },
+        { id: 3, title: 'Bài tập thực hành JavaScript', author: 'Lê Văn C', year: 2024, fileName: 'Bai-tap-JavaScript.docx', size: '850 KB' },
+        { id: 4, title: 'Tài liệu tham khảo React', author: 'Phạm Thị D', year: 2023, fileName: 'Tai-lieu-React.pdf', size: '3.2 MB' }
       ]},
       { subjectCode: 'CO3093', subjectName: 'Mạng máy tính', documents: [
-        { id: 5, name: 'Giáo trình Mạng máy tính - Tập 1', fileName: 'Giao-trinh-Mang-may-tinh-Tap1.pdf', size: '4.1 MB' },
-        { id: 6, name: 'Slide bài giảng TCP/IP', fileName: 'Slide-TCP-IP.pdf', size: '2.3 MB' },
-        { id: 7, name: 'Bài tập mạng máy tính', fileName: 'Bai-tap-Mang-may-tinh.pdf', size: '1.5 MB' }
+        { id: 5, title: 'Giáo trình Mạng máy tính - Tập 1', author: 'Hoàng Văn E', year: 2022, fileName: 'Giao-trinh-Mang-may-tinh-Tap1.pdf', size: '4.1 MB' },
+        { id: 6, title: 'Slide bài giảng TCP/IP', author: 'Vũ Thị F', year: 2024, fileName: 'Slide-TCP-IP.pdf', size: '2.3 MB' },
+        { id: 7, title: 'Bài tập mạng máy tính', author: 'Đỗ Văn G', year: 2023, fileName: 'Bai-tap-Mang-may-tinh.pdf', size: '1.5 MB' }
       ]},
       { subjectCode: 'CO3005', subjectName: 'Nguyên lý ngôn ngữ lập trình', documents: [
-        { id: 8, name: 'Giáo trình PPL - Chương 1-3', fileName: 'Giao-trinh-PPL-Chuong1-3.pdf', size: '3.8 MB' },
-        { id: 9, name: 'Slide bài giảng PPL', fileName: 'Slide-PPL.pdf', size: '2.9 MB' },
-        { id: 10, name: 'Tài liệu tham khảo về Compiler', fileName: 'Tai-lieu-Compiler.pdf', size: '5.2 MB' }
+        { id: 8, title: 'Giáo trình PPL - Chương 1-3', author: 'Bùi Văn H', year: 2023, fileName: 'Giao-trinh-PPL-Chuong1-3.pdf', size: '3.8 MB' },
+        { id: 9, title: 'Slide bài giảng PPL', author: 'Ngô Thị I', year: 2024, fileName: 'Slide-PPL.pdf', size: '2.9 MB' },
+        { id: 10, title: 'Tài liệu tham khảo về Compiler', author: 'Đinh Văn K', year: 2022, fileName: 'Tai-lieu-Compiler.pdf', size: '5.2 MB' }
       ]},
       { subjectCode: 'CO2003', subjectName: 'Cấu trúc dữ liệu và giải thuật', documents: [
-        { id: 11, name: 'Giáo trình CTDL&GT', fileName: 'Giao-trinh-CTDL-GT.pdf', size: '6.5 MB' },
-        { id: 12, name: 'Slide bài giảng Cây nhị phân', fileName: 'Slide-Cay-nhi-phan.pdf', size: '1.9 MB' },
-        { id: 13, name: 'Bài tập thực hành CTDL&GT', fileName: 'Bai-tap-CTDL-GT.pdf', size: '2.1 MB' }
+        { id: 11, title: 'Giáo trình CTDL&GT', author: 'Lý Văn L', year: 2023, fileName: 'Giao-trinh-CTDL-GT.pdf', size: '6.5 MB' },
+        { id: 12, title: 'Slide bài giảng Cây nhị phân', author: 'Trương Thị M', year: 2024, fileName: 'Slide-Cay-nhi-phan.pdf', size: '1.9 MB' },
+        { id: 13, title: 'Bài tập thực hành CTDL&GT', author: 'Võ Văn N', year: 2024, fileName: 'Bai-tap-CTDL-GT.pdf', size: '2.1 MB' }
       ]},
       { subjectCode: 'CO2013', subjectName: 'Hệ cơ sở dữ liệu', documents: [
-        { id: 14, name: 'Giáo trình Cơ sở dữ liệu', fileName: 'Giao-trinh-CSDL.pdf', size: '4.7 MB' },
-        { id: 15, name: 'Slide bài giảng SQL', fileName: 'Slide-SQL.pdf', size: '2.4 MB' },
-        { id: 16, name: 'Bài tập thực hành SQL', fileName: 'Bai-tap-SQL.pdf', size: '1.2 MB' }
+        { id: 14, title: 'Giáo trình Cơ sở dữ liệu', author: 'Phan Văn O', year: 2023, fileName: 'Giao-trinh-CSDL.pdf', size: '4.7 MB' },
+        { id: 15, title: 'Slide bài giảng SQL', author: 'Dương Thị P', year: 2024, fileName: 'Slide-SQL.pdf', size: '2.4 MB' },
+        { id: 16, title: 'Bài tập thực hành SQL', author: 'Hồ Văn Q', year: 2024, fileName: 'Bai-tap-SQL.pdf', size: '1.2 MB' }
       ]},
       { subjectCode: 'CO2017', subjectName: 'Hệ điều hành', documents: [
-        { id: 17, name: 'Giáo trình Hệ điều hành', fileName: 'Giao-trinh-HDH.pdf', size: '5.3 MB' },
-        { id: 18, name: 'Slide bài giảng Process Management', fileName: 'Slide-Process-Management.pdf', size: '2.6 MB' }
+        { id: 17, title: 'Giáo trình Hệ điều hành', author: 'Tôn Văn R', year: 2022, fileName: 'Giao-trinh-HDH.pdf', size: '5.3 MB' },
+        { id: 18, title: 'Slide bài giảng Process Management', author: 'Lâm Thị S', year: 2024, fileName: 'Slide-Process-Management.pdf', size: '2.6 MB' }
       ]},
       { subjectCode: 'CO2039', subjectName: 'Lập trình Nâng cao', documents: [
-        { id: 19, name: 'Giáo trình OOP', fileName: 'Giao-trinh-OOP.pdf', size: '4.9 MB' },
-        { id: 20, name: 'Slide bài giảng OOP', fileName: 'Slide-OOP.pdf', size: '3.1 MB' },
-        { id: 21, name: 'Bài tập thực hành OOP', fileName: 'Bai-tap-OOP.pdf', size: '1.8 MB' }
+        { id: 19, title: 'Giáo trình OOP', author: 'Chu Văn T', year: 2023, fileName: 'Giao-trinh-OOP.pdf', size: '4.9 MB' },
+        { id: 20, title: 'Slide bài giảng OOP', author: 'Mai Thị U', year: 2024, fileName: 'Slide-OOP.pdf', size: '3.1 MB' },
+        { id: 21, title: 'Bài tập thực hành OOP', author: 'Đặng Văn V', year: 2024, fileName: 'Bai-tap-OOP.pdf', size: '1.8 MB' }
       ]},
       { subjectCode: 'CO1007', subjectName: 'Cấu trúc rời rạc', documents: [
-        { id: 22, name: 'Giáo trình Toán rời rạc', fileName: 'Giao-trinh-Toan-roi-rac.pdf', size: '5.8 MB' },
-        { id: 23, name: 'Slide bài giảng Logic', fileName: 'Slide-Logic.pdf', size: '2.0 MB' }
+        { id: 22, title: 'Giáo trình Toán rời rạc', author: 'Bành Văn X', year: 2022, fileName: 'Giao-trinh-Toan-roi-rac.pdf', size: '5.8 MB' },
+        { id: 23, title: 'Slide bài giảng Logic', author: 'Cao Thị Y', year: 2024, fileName: 'Slide-Logic.pdf', size: '2.0 MB' }
       ]},
       { subjectCode: 'MT2013', subjectName: 'Xác suất và Thống kê', documents: [
-        { id: 24, name: 'Giáo trình Xác suất thống kê', fileName: 'Giao-trinh-Xac-suat-thong-ke.pdf', size: '6.2 MB' },
-        { id: 25, name: 'Slide bài giảng Xác suất', fileName: 'Slide-Xac-suat.pdf', size: '2.7 MB' },
-        { id: 26, name: 'Bài tập Xác suất thống kê', fileName: 'Bai-tap-Xac-suat-thong-ke.pdf', size: '1.6 MB' }
+        { id: 24, title: 'Giáo trình Xác suất thống kê', author: 'Lưu Văn Z', year: 2023, fileName: 'Giao-trinh-Xac-suat-thong-ke.pdf', size: '6.2 MB' },
+        { id: 25, title: 'Slide bài giảng Xác suất', author: 'Tạ Thị AA', year: 2024, fileName: 'Slide-Xac-suat.pdf', size: '2.7 MB' },
+        { id: 26, title: 'Bài tập Xác suất thống kê', author: 'Hà Văn BB', year: 2024, fileName: 'Bai-tap-Xac-suat-thong-ke.pdf', size: '1.6 MB' }
       ]}
     ];
     const searchInput = document.getElementById('searchInput');
@@ -135,7 +136,11 @@
       documentsData.forEach(subject => {
         const matchByCode = subject.subjectCode.toLowerCase().includes(term);
         const matchByName = subject.subjectName.toLowerCase().includes(term);
-        const matchingDocs = subject.documents.filter(doc => doc.name.toLowerCase().includes(term));
+        const matchingDocs = subject.documents.filter(doc => 
+          doc.title.toLowerCase().includes(term) || 
+          doc.author.toLowerCase().includes(term) ||
+          doc.year.toString().includes(term)
+        );
         if (matchByCode || matchByName) results.push(subject);
         else if (matchingDocs.length > 0) results.push({ ...subject, documents: matchingDocs });
       });
@@ -158,7 +163,8 @@
               ${subject.documents.map(doc => `
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3 sm:p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                   <div class="flex-1">
-                    <div class="font-bold text-[16px] sm:text-[18px] text-black mb-1">${doc.name}</div>
+                    <div class="font-bold text-[16px] sm:text-[18px] text-black mb-1">${doc.title}</div>
+                    <div class="text-[14px] sm:text-[16px] text-gray-600 mb-1">Tác giả: ${doc.author} | Năm xuất bản: ${doc.year}</div>
                     <div class="text-[14px] sm:text-[16px] text-gray-600">Kích thước: ${doc.size}</div>
                   </div>
                   <button onclick="downloadDocument(${doc.id}, '${doc.fileName}')" class="px-4 sm:px-6 py-2 bg-[#3c8dbc] text-white font-bold text-[14px] sm:text-[16px] rounded-lg hover:bg-[#367fa9] transition-colors whitespace-nowrap w-full sm:w-auto">⬇ Tải xuống</button>
@@ -183,11 +189,57 @@
     const navigateToPage = (page) => {
       window.location.href = `${page}${userRole ? `?role=${userRole}` : ''}`;
     };
+    
+    const sidebarItems = document.querySelectorAll('.row, .row-2, .row-3, .row-4');
+    
+    const removeActiveClass = () => {
+      sidebarItems.forEach(item => item.classList.remove('active'));
+    };
+    
+    const setActiveItem = (item) => {
+      removeActiveClass();
+      if (item) item.classList.add('active');
+    };
+    
+    const setActiveByPage = () => {
+      const currentPage = window.location.pathname.split('/').pop() || 'Library.html';
+      if (currentPage.includes('Student schedule')) {
+        setActiveItem(document.querySelector('.row'));
+      } else if (currentPage.includes('Library')) {
+        setActiveItem(document.querySelector('.row-2'));
+      } else if (currentPage.includes('HomePage')) {
+        setActiveItem(document.querySelector('.row-3'));
+      } else if (currentPage.includes('Profile')) {
+        setActiveItem(document.querySelector('.row-4'));
+      }
+    };
+    
+    setActiveByPage();
+    
+    const logout = () => {
+      window.location.href = 'Login.html';
+    };
+    
     document.querySelector('.frame .cursor-pointer').addEventListener('click', () => navigateToPage('HomePage.html'));
-    document.querySelector('.row').addEventListener('click', () => navigateToPage('Student schedule.html'));
-    document.querySelector('.row-2').addEventListener('click', () => navigateToPage('Library.html'));
-    document.querySelector('.row-3').addEventListener('click', () => navigateToPage('HomePage.html'));
-    document.querySelector('.row-4').addEventListener('click', () => navigateToPage('Profile.html'));
+    document.querySelector('.row').addEventListener('click', function() {
+      setActiveItem(this);
+      navigateToPage('Student schedule.html');
+    });
+    document.querySelector('.row-2').addEventListener('click', function() {
+      setActiveItem(this);
+      navigateToPage('Library.html');
+    });
+    document.querySelector('.row-3').addEventListener('click', function() {
+      setActiveItem(this);
+      navigateToPage('HomePage.html');
+    });
+    document.querySelector('.row-4').addEventListener('click', function() {
+      setActiveItem(this);
+      navigateToPage('Profile.html');
+    });
+    document.querySelector('.row-5').addEventListener('click', function() {
+      logout();
+    });
   </script>
 </body>
 </html>

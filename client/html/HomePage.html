@@ -39,6 +39,7 @@
         <div class="text-wrapper-9">&gt;</div>
         <div class="text-wrapper-10">☰</div>
       </div>
+      <div class="row-5"><div class="text-wrapper-5">☰</div><div class="text">Đăng xuất</div><div class="text-wrapper-6">&gt;</div></div>
     </div>
     <div class="MAIN-CONTENT">
       <div class="w-full min-h-screen bg-[#fbfafa] p-4 sm:p-6 flex items-center justify-center">
@@ -60,13 +61,57 @@
     const isStudent = userRole === 'student';
     document.getElementById('roleDisplay').textContent = isStudent ? 'Sinh viên' : 'Tutor';
     document.getElementById('sidebarTitle').textContent = isStudent ? 'Thông tin sinh viên' : 'Thông tin Tutor';
-    const navigateToPage = (page) => {
+    
+    const sidebarItems = document.querySelectorAll('.row, .row-2, .row-3, .row-4');
+    
+    const removeActiveClass = () => {
+      sidebarItems.forEach(item => item.classList.remove('active'));
+    };
+    
+    const setActiveItem = (item) => {
+      removeActiveClass();
+      if (item) item.classList.add('active');
+    };
+    
+    const setActiveByPage = () => {
+      const currentPage = window.location.pathname.split('/').pop() || 'HomePage.html';
+      if (currentPage.includes('Student schedule')) {
+        setActiveItem(document.querySelector('.row'));
+      } else if (currentPage.includes('Library')) {
+        setActiveItem(document.querySelector('.row-2'));
+      } else if (currentPage.includes('HomePage')) {
+        setActiveItem(document.querySelector('.row-3'));
+      } else if (currentPage.includes('Profile')) {
+        setActiveItem(document.querySelector('.row-4'));
+      }
+    };
+    
+    setActiveByPage();
+    
+    const navigateToPage = (page, item) => {
+      setActiveItem(item);
       window.location.href = `${page}${userRole ? `?role=${userRole}` : ''}`;
     };
-    document.querySelector('.row').addEventListener('click', () => navigateToPage('Student schedule.html'));
-    document.querySelector('.row-2').addEventListener('click', () => navigateToPage('Library.html'));
-    document.querySelector('.row-3').addEventListener('click', () => navigateToPage('HomePage.html'));
-    document.querySelector('.row-4').addEventListener('click', () => navigateToPage('Profile.html'));
+    
+    const logout = () => {
+      window.location.href = 'Login.html';
+    };
+    
+    document.querySelector('.row').addEventListener('click', function() {
+      navigateToPage('Student schedule.html', this);
+    });
+    document.querySelector('.row-2').addEventListener('click', function() {
+      navigateToPage('Library.html', this);
+    });
+    document.querySelector('.row-3').addEventListener('click', function() {
+      navigateToPage('HomePage.html', this);
+    });
+    document.querySelector('.row-4').addEventListener('click', function() {
+      navigateToPage('Profile.html', this);
+    });
+    document.querySelector('.row-5').addEventListener('click', function() {
+      logout();
+    });
   </script>
 </body>
 </html>
