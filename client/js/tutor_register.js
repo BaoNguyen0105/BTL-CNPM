@@ -3,16 +3,8 @@ const API_BASE = "http://localhost:3000";
 
 // ===== Auth (từ localStorage) =====
 const token = localStorage.getItem("token");
-const role = localStorage.getItem("role"); // optional
 
-if (!token) {
-  window.location.href = "./Login.html";
-}
-
-// Nếu muốn chặn không cho student vào trang tutor:
-if (role && role !== "tutor") {
-  window.location.href = "./HomePage.html";
-}
+if (!token) window.location.href = "./Login.html";
 
 // ===== Map elements (contract) =====
 const dateEl = document.getElementById("tutor-session-date");
@@ -65,9 +57,15 @@ createBtn?.addEventListener("click", async () => {
   const timeRange = getTrimmedValue(shiftEl);
   const subjectId = getTrimmedValue(subjectEl);
   const maxStudents = getTrimmedValue(maxStudentsEl);
+  const maxStudentsNum = Number(maxStudents);
 
   if (!date || !building || !room || !timeRange || !subjectId || !maxStudents) {
     setMessage("Vui lòng nhập đầy đủ: Ngày, Tòa nhà, Phòng, Ca học, Môn học, Số lượng sinh viên.", true);
+    return;
+  }
+
+  if (!Number.isInteger(maxStudentsNum) || maxStudentsNum <= 0) {
+    setMessage("Số lượng sinh viên phải là số nguyên dương.", true);
     return;
   }
 
@@ -77,7 +75,7 @@ createBtn?.addEventListener("click", async () => {
     building,
     room,
     timeRange,
-    maxStudents,
+    maxStudents: maxStudentsNum,
   };
 
   createBtn.disabled = true;
@@ -97,7 +95,7 @@ createBtn?.addEventListener("click", async () => {
     if (roomEl) roomEl.value = "";
     if (shiftEl) shiftEl.value = "";
     if (subjectEl) subjectEl.value = "";
-    if (maxStudents) maxStudentsEl.value = "";
+    if (maxStudentsEl) maxStudentsEl.value = "";
 
   } catch (e) {
     setMessage("Mở lớp thất bại: " + e.message, true);
