@@ -66,7 +66,8 @@ function renderSessions(rows) {
   listBody.innerHTML = rows.map((s) => `
     <tr>
       <td>${s.subject}</td>
-      <td>${s.building} - ${s.room}</td>
+      <td>${s.building}</td>
+      <td>${s.room}</td>
       <td>${s.currentStudents}/${s.maxStudents}</td>
       <td>${s.tutorName}</td>
       <td>${s.date}</td>
