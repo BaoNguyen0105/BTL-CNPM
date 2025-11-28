@@ -1,7 +1,7 @@
 // student_schedule.js
 const API_BASE = "http://localhost:3000";
 
-// ===== Auth =====
+// ===== Auth (từ localStorage) =====
 const token = localStorage.getItem("token");
 const userId = localStorage.getItem("userId"); // studentId
 
@@ -10,8 +10,8 @@ if (!token || !userId) {
 }
 
 // ===== Map elements (contract) =====
-const listBody = document.getElementById("student-registered-session-list"); // tbody
-const messageEl = document.getElementById("student-registered-message");
+const listBody = document.getElementById("sched-session-list"); // tbody
+const messageEl = document.getElementById("sched-message");
 
 // ===== UI helpers =====
 function setMessage(msg, isError = true) {
@@ -21,8 +21,8 @@ function setMessage(msg, isError = true) {
 }
 
 // ===== API =====
-async function apiGetRegisteredSessions() {
-  const res = await fetch(`${API_BASE}/sessions/registered?studentId=${encodeURIComponent(userId)}`, {
+async function apiGetAvailableSessions() {
+  const res = await fetch(`${API_BASE}/sessions/available`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -36,8 +36,8 @@ async function apiGetRegisteredSessions() {
   return Array.isArray(data) ? data : (data.data || []);
 }
 
-async function apiCancelSession(sessionId) {
-  const res = await fetch(`${API_BASE}/sessions/${encodeURIComponent(sessionId)}/cancel`, {
+async function apiRegisterSession(sessionId) {
+  const res = await fetch(`${API_BASE}/sessions/${encodeURIComponent(sessionId)}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,48 +48,43 @@ async function apiCancelSession(sessionId) {
 
   const data = await res.json().catch(() => ({}));
   if (!res.ok || data?.error) throw new Error(data?.error || `HTTP ${res.status}`);
-
   return data;
 }
 
-// ===== Render =====
-function renderRegisteredSessions(rows) {
+// ===== Render (đổ data vào thẳng body sched-session-list ở HTML luôn nha) =====
+function renderSessions(rows) {
   if (!listBody) return;
 
   if (!Array.isArray(rows) || rows.length === 0) {
     listBody.innerHTML =
       `<tr><td colspan="999" style="text-align:center; padding:12px;">
-        Bạn chưa đăng ký buổi học nào.
+        Không có buổi học đang mở.
       </td></tr>`;
     return;
   }
 
-  listBody.innerHTML = rows
-    .map(
-      (s) => `
+  listBody.innerHTML = rows.map((s) => `
     <tr>
-      <td>${s.sessionId}</td>
       <td>${s.subject}</td>
-      <td>${s.tutorName}</td>
-      <td>${s.date}</td>
-      <td>${s.timeRange}</td>
       <td>${s.building}</td>
       <td>${s.room}</td>
       <td>${s.currentStudents}/${s.maxStudents}</td>
+      <td>${s.tutorName}</td>
+      <td>${s.date}</td>
+      <td>${s.timeRange}</td>
       <td>
-        <button class="student-session-cancel-btn" data-session-id="${s.sessionId}">
-          Xóa
+        <button class="sched-register-btn" data-session-id="${s.sessionId}">
+          Chọn
         </button>
       </td>
     </tr>
-  `
-    )
-    .join("");
+  `).join("");
 }
 
-// ===== Events: Hủy đăng ký =====
+// ===== Events =====
+// Đăng ký buổi học
 document.addEventListener("click", async (e) => {
-  const btn = e.target.closest(".student-session-cancel-btn");
+  const btn = e.target.closest(".sched-register-btn");
   if (!btn) return;
 
   const sessionId = btn.getAttribute("data-session-id");
@@ -99,29 +94,30 @@ document.addEventListener("click", async (e) => {
 
   btn.disabled = true;
   const oldText = btn.textContent;
-  btn.textContent = "Đang hủy...";
+  btn.textContent = "Đang đăng ký...";
 
   try {
-    await apiCancelSession(sessionId);
-    setMessage("Hủy đăng ký thành công!", false);
+    const result = await apiRegisterSession(sessionId);
 
-    // reload list
-    const rows = await apiGetRegisteredSessions();
-    renderRegisteredSessions(rows);
+    setMessage("Đăng ký thành công!", false);
+
+    // reload list để cập nhật currentStudents/maxStudents
+    const rows = await apiGetAvailableSessions();
+    renderSessions(rows);
   } catch (err) {
-    setMessage("Hủy đăng ký thất bại: " + err.message, true);
+    setMessage("Đăng ký thất bại: " + err.message, true);
   } finally {
     btn.disabled = false;
-    btn.textContent = oldText || "Xóa";
+    btn.textContent = oldText || "Chọn";
   }
 });
 
-// ===== Kickoff =====
+// ===== Kickoff: vào trang auto load =====
 (async function init() {
-  setMessage("Đang tải danh sách đã đăng ký...", false);
+  setMessage("Đang tải danh sách buổi học...", false);
   try {
-    const rows = await apiGetRegisteredSessions();
-    renderRegisteredSessions(rows);
+    const rows = await apiGetAvailableSessions();
+    renderSessions(rows);
     setMessage("", false);
   } catch (err) {
     setMessage("Không tải được danh sách: " + err.message, true);
