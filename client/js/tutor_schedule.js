@@ -50,7 +50,8 @@ function renderTutorSessions(rows) {
       <td>${s.subject}</td>
       <td>${s.date}</td>
       <td>${s.timeRange}</td>
-      <td>${s.building} - ${s.room}</td>
+      <td>${s.building}</td>
+      <td>${s.room}</td>
       <td>${s.currentStudents}/${s.maxStudents}</td>
     </tr>
   `
