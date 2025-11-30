@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Đăng ký - Tutor System</title>
+  <title>Các môn học đã đăng ký - Tutor System</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, sans-serif; background:#f0f0f0; color:#333; }
@@ -110,20 +110,20 @@
     }
     .btn { padding:8px 18px; border-radius:20px; border:1px solid #d0d0d0; background:#fff; font-weight:600; color:#333; text-decoration:none; display:inline-block; text-align:center; }
 
-    .sched-register-btn {
+    .student-session-cancel-btn {
       padding:6px 12px;
       border-radius:6px;
-      border:1px solid #2f98cd;
-      background:#2f98cd;
+      border:1px solid #d9534f;
+      background:#d9534f;
       color:#fff;
       font-weight:600;
       cursor:pointer;
     }
-    .sched-register-btn[disabled] {
+    .student-session-cancel-btn[disabled] {
       opacity:0.5;
       cursor:not-allowed;
-      background:#cfe7f3;
-      border-color:#cfe7f3;
+      background:#f7b7b5;
+      border-color:#f7b7b5;
       color:#fff;
     }
 
@@ -140,12 +140,12 @@
     .info-left { font-style:italic; color:#222; line-height:1.4; }
     .info-right { font-weight:700; color:#222; }
 
-    #sched-message {
+    #student-registered-message {
       margin-top:12px;
       font-size:14px;
       color:#333;
     }
-    #sched-message.error { color:#b00020; }
+    #student-registered-message.error { color:#b00020; }
 
     @media (max-width:900px) {
       .sidebar { display:none; }
@@ -176,23 +176,25 @@
     </aside>
 
     <main class="content" role="main">
-      <div class="section-title">ĐĂNG KÝ</div>
+      <div class="section-title">CÁC MÔN HỌC ĐÃ ĐĂNG KÝ</div>
 
-      <div class="table-wrap" aria-labelledby="sched-message">
-        <table aria-describedby="sched-message">
+      <div class="table-wrap" aria-labelledby="student-registered-message">
+        <table aria-describedby="student-registered-message">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Tên môn</th>
+              <th>Giảng viên</th>
+              <th>Ngày</th>
+              <th>Giờ học</th>
+              <th>Tòa nhà</th>
               <th>Phòng học</th>
               <th>Sĩ số</th>
-              <th>Giảng viên</th>
-              <th>Giờ học</th>
-              <th>Tuần học</th>
               <th></th>
             </tr>
           </thead>
 
-          <tbody id="sched-session-list">
+          <tbody id="student-registered-session-list">
             <tr class="empty-row">
               <td>----</td>
               <td>----</td>
@@ -200,8 +202,10 @@
               <td>----</td>
               <td>----</td>
               <td>----</td>
+              <td>----</td>
+              <td>----</td>
               <td>
-                <button class="sched-register-btn" data-session-id="" disabled aria-disabled="true">Chọn</button>
+                <button class="student-session-cancel-btn" data-session-id="" disabled aria-disabled="true">Xóa</button>
               </td>
             </tr>
           </tbody>
@@ -211,7 +215,7 @@
 
         <div class="footer-actions" aria-hidden="true">
           <a class="btn" href="/">Trang chính</a>
-          <a class="btn" href="Student_schedule.html">Trở về</a>
+          <a class="btn" href="Student_schedule.html">Đăng ký</a>
         </div>
       </div>
 
@@ -223,9 +227,9 @@
         <div class="info-right">Version 0.1.0</div>
       </div>
 
-      <div id="sched-message" role="status" aria-live="polite"></div>
+      <div id="student-registered-message" role="status" aria-live="polite"></div>
 
-      <script src="../js/student_register.js"></script>
+      <script src="../js/student_schedule.js"></script>
     </main>
   </div>
 </body>
