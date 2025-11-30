@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bảng đăng ký môn học - Tutor System</title>
+  <title>Đăng ký buổi học - Tutor System</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, sans-serif; background:#f0f0f0; color:#333; }
@@ -176,24 +176,26 @@
     </aside>
 
     <main class="content" role="main">
-      <div class="section-title">BẢNG ĐĂNG KÝ MÔN HỌC</div>
+      <div class="section-title">ĐĂNG KÝ BUỔI HỌC</div>
 
       <div class="table-wrap" aria-labelledby="sched-message">
         <table aria-describedby="sched-message">
           <thead>
             <tr>
               <th>Tên môn</th>
+              <th>Giảng viên</th>
+              <th>Ngày</th>
+              <th>Giờ học</th>
+              <th>Tòa nhà</th>
               <th>Phòng học</th>
               <th>Sĩ số</th>
-              <th>Giảng viên</th>
-              <th>Giờ học</th>
-              <th>Tuần học</th>
               <th></th>
             </tr>
           </thead>
 
           <tbody id="sched-session-list">
             <tr class="empty-row">
+              <td>----</td>
               <td>----</td>
               <td>----</td>
               <td>----</td>
@@ -211,8 +213,7 @@
 
         <div class="footer-actions" aria-hidden="true">
           <a class="btn" href="/">Trang chính</a>
-          <a class="btn" href="Student_register.html">Đăng ký</a>
-          <a class="btn" href="Student_edit.html">Chỉnh sửa</a>
+          <a class="btn" href="Student_register.html">Chỉnh sửa</a>
         </div>
       </div>
 
@@ -225,8 +226,6 @@
       </div>
 
       <div id="sched-message" role="status" aria-live="polite"></div>
-
-      <script src="../js/student_schedule.js"></script>
       <script src="../js/student_register.js"></script>
     </main>
   </div>
